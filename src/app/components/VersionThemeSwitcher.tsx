@@ -10,14 +10,12 @@ export function VersionThemeSwitcher() {
     lightSeed: string;
     darkSeed: string;
   }> = [
-    { id: "Master Green", label: "Green", lightSeed: "#00C658", darkSeed: "#00C658" },
-    { id: "Green Adapted", label: "Green Ad.", lightSeed: "#3FE371", darkSeed: "#3FE371" },
-    { id: "Master Blue V1", label: "Blue V1", lightSeed: "#194BB7", darkSeed: "#B5CCE3" },
-    { id: "Master Blue V2", label: "Blue V2", lightSeed: "#2354A2", darkSeed: "#8FB5D6" },
-    { id: "Master Blue V3", label: "Blue V3", lightSeed: "#082C79", darkSeed: "#85CCE6" },
+    { id: "Master Blue V1", label: "Original (V1)", lightSeed: "#194BB7", darkSeed: "#B5CCE3" },
+    { id: "Master Green", label: "Master Green", lightSeed: "#00C658", darkSeed: "#00C658" },
+    { id: "Green Adapted", label: "Green Adapted", lightSeed: "#3FE371", darkSeed: "#3FE371" },
     { id: "Master Blue V4", label: "Blue V4", lightSeed: "#194BB8", darkSeed: "#4A7BE5" },
     { id: "Master Blue V5", label: "Blue V5", lightSeed: "#2B5DCA", darkSeed: "#6997FB" },
-    { id: "Master Blue V6", label: "Blue V6", lightSeed: "#2B5DCA", darkSeed: "#6997FB" },
+    { id: "Master Blue V6", label: "Blue V6 (Current)", lightSeed: "#2B5DCA", darkSeed: "#6997FB" },
   ];
 
   return (
