@@ -1,0 +1,154 @@
+spring:
+  application:
+    name: Conductor Service
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: postgres
+    url: jdbc:postgresql://10.11.28.5:5432/camundadb
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+      max-lifetime: 30000
+      idle-timeout: 10000
+      connection-test-query: SELECT 1
+  jackson:
+    date-format: com.fasterxml.jackson.databind.util.StdDateFormat
+    default-property-inclusion: NON_EMPTY
+    serialization:
+      write-date-keys-as-timestamps: false
+      write-dates-as-timestamps: false
+    time-zone: UTC
+  boot.admin.client:
+    url: http://localhost:53105
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    pick-list-queue: conductor
+    pick-list-queue-consumer: conductor.storage-status
+    host-outbound-queue: host-outbound-trigger
+    host-outbound-consumer: host-outbound
+  
+server:
+  servlet:
+    context-path: /conductor
+  address: 0.0.0.0
+  port: 53150
+  compression.enabled: true
+  http2.enabled: true
+  error:
+    include-message: always
+management:
+  endpoints.web.exposure.include: "*"
+  endpoint.health.show-details: always
+  endpoint.logfile.external-file: C:/KPI/logs/wes-conductor-service.log
+logging:
+  file:
+    name: C:/KPI/logs/wes-conductor.log
+    max-size: 10MB
+    max-history: 7
+  pattern:
+    rolling-file-name: C:/KPI/logs/wes-conductor-%d{yyyy-MM-dd}.%i.log
+  level:
+    root: INFO
+    org.springframework: INFO
+    com.kpi.opto.wes.conductor: INFO
+    com.kpi.opto.wes.conductor.commons.camunda.config: DEBUG
+  structured:
+    format:
+      console: ecs
+      file: ecscamunda:
+  bpm:
+    admin-user:
+      id: guest
+      password: guest
+      firstName: guest
+    license-file: file:${user.home}/.camunda/license.txt
+    generic-properties:
+      properties:
+        history-cleanup-batch-window-start-time: "11:00"
+        history-cleanup-batch-window-end-time: "18:59"
+        history-time-to-live: "P30D"
+webclient:
+  connection-timeout: 20000
+  read-timeout: 15000
+  write-timeout: 15000
+  max-retries-attempts: 6
+  max-retries-back-off-in-seconds: 10
+services:
+  scan-service-base-url: http://localhost:53155/scan/v1
+  scan-statistics-by-scanner-id: /scan-statistics/scanner/
+  storage-base-url: http://localhost:53130/storage/v1
+  inventory-base-url: http://localhost:53120/inventory/v1
+  work-base-url: http://localhost:53140/work/v1
+  sol-host-base-url: http://localhost:59078/sol/v1/messages
+  geek-adapter-base-url: http://localhost:55000
+  auto-store-base-url: http://172.190.252.155:59087/v2/AutoStoreApi/ASReceive
+  item-base-url: http://localhost:53115/item/v1
+  ledger-base-url: http://localhost:53145/ledger/v1
+  access-base-url: http://localhost:53110/access/v1
+  system-parameter-by-id: /system-parameters/{parameterId}
+  pick-list-definition-key: picklist_by_lot
+  geek-call-back: /device-event
+  geek-info-call-back: /device-info
+  start-up-process-keys: cooling-room-inbound-listener
+  conveyor-arrival-report: cooling-room-conveyor
+springdoc:
+  api-docs:
+    path: /swagger
+maxPodAllowedForLot: 7
+host:
+  version: 1.0.0
+  instance-id: Kommand
+  warehouse-id: DC
+  area-id: Processing
+geek:
+  system-id: RMSP
+  device-type: GeekPlus
+  in-memory-size: 5242880
+  max-retries-attempts: 3
+  max-retries-back-off-in-seconds: 5
+custom-fields:
+  customFieldMap:
+    "attribute1":
+      id: colonized
+      type: boolean
+    "attribute2":
+      id: aborted
+      type: boolean
+    "attribute3":
+      id: qa
+      type: boolean
+    "attribute4":
+      id: lpn
+      type: string
+    "attribute5":
+      id: lot
+      type: string
+      
+# starter properties
+service:
+  auto-store:
+    # fmp-qa autostore
+    base-url: http://172.191.139.99:59087
+    version: 2.0.0
+    client-id: 1ASNoneAS1
+    instance-id: FactoryMotorParts
+    area-id: AREA
+    priority: 10
+    download-url: http://wes-as.kpiopto.com:59088/
+    inventory-status: GOOD
+    retry:
+      maxAttempts: 3
+      maxBackOffInSeconds: 5
+  host-connector:
+    pick-callback:
+      service:
+        enabled: true
+        rest:
+          endpoint:
+            client:
+              base: http://hondator-dev.kpiopto.com:59078
