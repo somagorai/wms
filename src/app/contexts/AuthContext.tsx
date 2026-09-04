@@ -25,7 +25,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         console.error("Error loading user from localStorage:", error);
       }
     }
-    return null;
+    // Default to admin for immediate live access
+    return { username: "admin", role: "admin" };
   });
 
   // Save to localStorage whenever user changes
