@@ -1,0 +1,41 @@
+@import './fonts.css';
+@import './tailwind.css';
+@import './chart-tokens.css';
+
+/* ─────────────────────────────────────────────
+   GLOBAL MODERN CUSTOM SCROLLBARS
+   Theme-adaptive, sleek, border-harmonized
+   Eliminates grey & white native browser boxes
+   ───────────────────────────────────────────── */
+
+/* Firefox & Standard CSS */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--outline-variant) transparent;
+}
+
+/* Chromium (Chrome, Edge) & WebKit (Safari) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--outline-variant);
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: var(--outline);
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}

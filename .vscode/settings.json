@@ -1,0 +1,9 @@
+{
+  "editor.colorDecorators": true,
+  "[json]": {
+    "editor.colorDecorators": true
+  },
+  "[jsonc]": {
+    "editor.colorDecorators": true
+  }
+}

@@ -1,0 +1,1646 @@
+@custom-variant dark (&:is(.dark *));
+@import './chart-tokens.css';
+
+/* ─────────────────────────────────────────────
+   OPTO V6 DESIGN SYSTEM — PrimaryKPI v2 Deep Blue & Cyan
+   Source: PrimaryKPI-v2.json (Material Theme Builder)
+   Seed: #0C3795 (Deep Blue / Navy)
+   Secondary: #1A5F95 / #4682BA (Ocean Blue)
+   Tertiary: #66C0DE / #00677F (Cyan)
+   
+   ✅ 100% Sourced from PrimaryKPI-v2.json
+   ✅ Containerized surface & component tokens
+   ✅ Containerized Fixed tonal tokens (primaryFixed, secondaryFixed, tertiaryFixed)
+   ✅ Pure clean neutrals for Light & Dark mode
+   ───────────────────────────────────────────── */
+
+@layer utilities {
+  /* Display */
+  .font-display-large { font-family: 'Nunito Sans', sans-serif; font-size: 3.575rem; font-weight: 700; line-height: 4rem; letter-spacing: -0.025em; }
+  .font-display-medium { font-family: 'Nunito Sans', sans-serif; font-size: 2.8125rem; font-weight: 700; line-height: 3.25rem; letter-spacing: -0.015em; }
+  .font-display-small { font-family: 'Nunito Sans', sans-serif; font-size: 2.25rem; font-weight: 700; line-height: 2.75rem; }
+
+  /* Headline */
+  .font-headline-large { font-family: 'Nunito Sans', sans-serif; font-size: 2rem; font-weight: 700; line-height: 2.5rem; }
+  .font-headline-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1.75rem; font-weight: 700; line-height: 2.25rem; }
+  .font-headline-small { font-family: 'Nunito Sans', sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 2rem; }
+
+  /* Title */
+  .font-title-large { font-family: 'Nunito Sans', sans-serif; font-size: 1.375rem; font-weight: 600; line-height: 1.75rem; }
+  .font-title-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5rem; letter-spacing: 0.015em; }
+  .font-title-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+
+  /* Body */
+  .font-body-large { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.5rem; letter-spacing: 0.025em; }
+  .font-body-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 400; line-height: 1.25rem; letter-spacing: 0.015em; }
+  .font-body-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 400; line-height: 1rem; letter-spacing: 0.02em; }
+
+  /* Label */
+  .font-label-large { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+  .font-label-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 600; line-height: 1rem; letter-spacing: 0.025em; }
+  .font-label-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.6875rem; font-weight: 600; line-height: 1rem; letter-spacing: 0.03em; }
+
+  /* ── Brand accent shortcuts ── */
+  --brand-accent:       #0C3795;
+  --brand-accent-dark:  #00236B;
+  --brand-accent-light: #B5C4FF;
+
+  /* ── Universal Charts ── */
+  --chart-2: var(--chart-green);
+  --chart-3: var(--chart-orange);
+  --chart-4: var(--chart-purple);
+  --chart-5: var(--chart-yellow);
+}
+
+/* ═══════════════════════════════════════════════
+   V6 LIGHT MODE (PrimaryKPI v2 - Deep Blue & Cyan)
+   Source: PrimaryKPI-v2.json → schemes.light
+   ═══════════════════════════════════════════════ */
+:root {
+  --font-family: 'Nunito Sans', sans-serif;
+  --font-size: 16px;
+
+  /* ── Primary Containerized Tokens ── */
+  --primary:                   #194BB7;  /* Master Blue V1 Light Primary */
+  --surface-tint:              #194BB7;  /* schemes.light.surfaceTint */
+  --primary-foreground:        #FFFFFF;  /* schemes.light.onPrimary */
+  --primary-container:         #194BB7;  /* schemes.light.primaryContainer */
+  --on-primary-container:      #FFFFFF;  /* schemes.light.onPrimaryContainer */
+  --inverse-primary:           #B5CCE3;  /* schemes.light.inversePrimary */
+
+  /* ── Primary Fixed Tokens ── */
+  --primary-fixed:             #DBE1FF;  /* schemes.light.primaryFixed */
+  --on-primary-fixed:          #00164D;  /* schemes.light.onPrimaryFixed */
+  --primary-fixed-dim:         #B5CCE3;  /* schemes.light.primaryFixedDim */
+  --on-primary-fixed-variant:  #194BB7;  /* schemes.light.onPrimaryFixedVariant */
+
+  /* ── Secondary Containerized Tokens (Ocean Blue) ── */
+  --secondary:                 #1A5F95;  /* schemes.light.secondary */
+  --secondary-foreground:      #FFFFFF;  /* schemes.light.onSecondary */
+  --secondary-container:       #3B78B0;  /* schemes.light.secondaryContainer */
+  --on-secondary-container:    #FDFCFF;  /* schemes.light.onSecondaryContainer */
+
+  /* ── Secondary Fixed Tokens ── */
+  --secondary-fixed:           #D0E4FF;  /* schemes.light.secondaryFixed */
+  --on-secondary-fixed:        #001D34;  /* schemes.light.onSecondaryFixed */
+  --secondary-fixed-dim:       #9BCBFF;  /* schemes.light.secondaryFixedDim */
+  --on-secondary-fixed-variant:#004A79;  /* schemes.light.onSecondaryFixedVariant */
+
+  /* ── Tertiary Containerized Tokens (Cyan Accent) ── */
+  --tertiary:                  #00677F;  /* schemes.light.tertiary */
+  --tertiary-foreground:       #FFFFFF;  /* schemes.light.onTertiary */
+  --tertiary-container:        #66C0DE;  /* schemes.light.tertiaryContainer */
+  --on-tertiary-container:     #004D5F;  /* schemes.light.onTertiaryContainer */
+  --tertiary-container-text:   #001F28;
+
+  /* ── Tertiary Fixed Tokens ── */
+  --tertiary-fixed:            #B6EBFF;  /* schemes.light.tertiaryFixed */
+  --on-tertiary-fixed:         #001F28;  /* schemes.light.onTertiaryFixed */
+  --tertiary-fixed-dim:        #79D2F1;  /* schemes.light.tertiaryFixedDim */
+  --on-tertiary-fixed-variant: #004E60;  /* schemes.light.onTertiaryFixedVariant */
+
+  /* ── 7 Surface Elevation Containers (Light Mode - Ultra Smooth Gradation) ── */
+  --background:                #FFFFFF;  /* Base Canvas */
+  --foreground:                #18191C;  /* Deep neutral text */
+  --on-background:             #18191C;
+  --surface:                   #FFFFFF;  /* Base surface */
+  --on-surface:                #18191C;
+  --surface-dim:               #E5E7EB;  /* Level 0: Dim baseline */
+  --surface-container-lowest:  #FFFFFF;  /* Level 1: Pristine white card */
+  --surface-container-low:     #F9FAFB;  /* Level 2: Outer section container */
+  --surface-container:         #F3F4F6;  /* Level 3: Subsection container */
+  --surface-container-high:    #E5E7EB;  /* Level 4: Nested card / input */
+  --surface-container-highest: #D1D5DB;  /* Level 5: Highest chip / active badge */
+  --surface-bright:            #FFFFFF;  /* Level 6: Floating popover / bright */
+
+  /* ── Surface Variant Containers ── */
+  --surface-variant:           #F3F4F6;
+  --on-surface-variant:        #4B5563;
+  --inverse-surface:           #1F2937;
+  --inverse-on-surface:        #F9FAFB;
+
+  /* ── Cards / Popovers ── */
+  --card:                      #FFFFFF;
+  --card-foreground:           #18191C;
+  --popover:                   #FFFFFF;
+  --popover-foreground:        #18191C;
+
+  /* ── Borders & Outlines (Tonal Surface V0 Mode) ── */
+  --border:                    transparent;
+  --border-light:              transparent;
+  --outline:                   transparent;
+  --outline-variant:           transparent;
+  --sidebar-border:            transparent;
+  --shadow:                    0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  --scrim:                     #000000;
+
+  /* ── Destructive / Error ── */
+  --destructive:               #BA1A1A;  /* schemes.light.error */
+  --destructive-foreground:    #FFFFFF;  /* schemes.light.onError */
+  --error-container:           #FFDAD6;  /* schemes.light.errorContainer */
+  --on-error-container:        #93000A;  /* schemes.light.onErrorContainer */
+
+  /* ── Controls & State ── */
+  --muted:                     #F5F6F8;
+  --muted-foreground:          #6B7280;
+  --accent:                    #EEF0F3;
+  --accent-foreground:         #18191C;
+  --input:                     #FFFFFF;
+  --input-background:          #FFFFFF;
+  --switch-background:         #D2D6DC;
+  --ring:                      #0C3795;
+
+  /* ── Hover / Selected Interaction States ── */
+  --state-hover:               rgba(24, 25, 28, 0.04);
+  --state-primary-hover:       rgba(12, 55, 149, 0.08);
+  --state-selected:            rgba(24, 25, 28, 0.08);
+  --state-primary-selected:    rgba(12, 55, 149, 0.12);
+
+  /* ── Semantic State Tokens ── */
+  --state-error:               #BA1A1A;
+  --state-error-foreground:    #FFFFFF;
+  --state-error-container:     #FFDAD6;
+  --state-on-error-container:  #93000A;
+
+  --state-warning:             #B06000;
+  --state-warning-foreground:  #FFFFFF;
+  --state-warning-container:   #FFDDB4;
+  --state-on-warning-container:#2D1600;
+
+  --state-success:             #2E7D32;
+  --state-success-foreground:  #FFFFFF;
+  --state-success-container:   #C8E6C9;
+  --state-on-success-container:#0F3818;
+
+  --state-info:                #1A5F95;
+  --state-info-foreground:     #FFFFFF;
+  --state-info-container:      #D0E4FF;
+  --state-on-info-container:   #001D34;
+
+  --state-debug:               #5D5D62;
+  --state-debug-foreground:    #FFFFFF;
+  --state-debug-container:     #E2E2E6;
+  --state-on-debug-container:  #1A1A1E;
+
+  --state-disabled-container:  #E0E2E7;
+  --state-disabled-content:    #9EA2AE;
+
+  /* ── Legacy Aliases ── */
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-primary-container:   var(--primary-container);
+  --color-on-primary-container:var(--on-primary-container);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container:var(--on-secondary-container);
+  --color-tertiary:            var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container:  var(--tertiary-container);
+  --color-on-tertiary-container:var(--on-tertiary-container);
+  --color-destructive:         var(--destructive);
+  --color-destructive-foreground:var(--destructive-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low:    var(--surface-container-low);
+  --color-surface-container:        var(--surface-container);
+  --color-surface-container-high:   var(--surface-container-high);
+  --color-surface-container-highest:var(--surface-container-highest);
+  --color-outline:             var(--outline);
+  --color-outline-variant:     var(--outline-variant);
+  --color-brand-accent:        var(--brand-accent);
+  --color-brand-accent-dark:   var(--brand-accent-dark);
+  --color-brand-accent-light:  var(--brand-accent-light);
+  --color-state-fatal:         var(--state-fatal);
+  --color-state-fatal-foreground: var(--state-fatal-foreground);
+  --color-state-fatal-container: var(--state-fatal-container);
+  --color-state-on-fatal-container: var(--state-on-fatal-container);
+  --color-state-error:         var(--state-error);
+  --color-state-error-foreground: var(--state-error-foreground);
+  --color-state-error-container: var(--state-error-container);
+  --color-state-on-error-container: var(--state-on-error-container);
+  --color-state-warning:       var(--state-warning);
+  --color-state-warning-foreground: var(--state-warning-foreground);
+  --color-state-warning-container: var(--state-warning-container);
+  --color-state-on-warning-container: var(--state-on-warning-container);
+  --color-state-info:          var(--state-info);
+  --color-state-info-foreground: var(--state-info-foreground);
+  --color-state-info-container: var(--state-info-container);
+  --color-state-on-info-container: var(--state-on-info-container);
+  --color-state-success:       var(--state-success);
+  --color-state-success-foreground: var(--state-success-foreground);
+  --color-state-success-container: var(--state-success-container);
+  --color-state-on-success-container: var(--state-on-success-container);
+  --color-state-debug:         var(--state-debug);
+  --color-state-debug-foreground: var(--state-debug-foreground);
+  --color-state-debug-container: var(--state-debug-container);
+  --color-state-on-debug-container: var(--state-on-debug-container);
+  --color-state-disabled-container: var(--state-disabled-container);
+  --color-state-disabled-content: var(--state-disabled-content);
+}
+
+/* ═══════════════════════════════════════════════
+   V6 DARK MODE (PrimaryKPI v2 - Deep Blue & Cyan)
+   Source: PrimaryKPI-v2.json → schemes.dark
+   ═══════════════════════════════════════════════ */
+.dark {
+  /* ── Primary Containerized Tokens ── */
+  --primary:                   #B5CCE3;  /* Master Blue V1 Dark Primary */
+  --surface-tint:              #B5CCE3;  /* schemes.dark.surfaceTint */
+  --primary-foreground:        #061A47;  /* schemes.dark.onPrimary */
+  --primary-container:         #194BB7;  /* schemes.dark.primaryContainer */
+  --on-primary-container:      #DBE1FF;  /* schemes.dark.onPrimaryContainer */
+  --inverse-primary:           #194BB7;  /* schemes.dark.inversePrimary */
+
+  /* ── Primary Fixed Tokens ── */
+  --primary-fixed:             #DBE1FF;  /* schemes.dark.primaryFixed */
+  --on-primary-fixed:          #00164D;  /* schemes.dark.onPrimaryFixed */
+  --primary-fixed-dim:         #B5CCE3;  /* schemes.dark.primaryFixedDim */
+  --on-primary-fixed-variant:  #194BB7;  /* schemes.dark.onPrimaryFixedVariant */
+
+  /* ── Secondary Containerized Tokens (Ocean Blue) ── */
+  --secondary:                 #9BCBFF;  /* schemes.dark.secondary */
+  --secondary-foreground:      #003356;  /* schemes.dark.onSecondary */
+  --secondary-container:       #5A95CE;  /* schemes.dark.secondaryContainer */
+  --on-secondary-container:    #001528;  /* schemes.dark.onSecondaryContainer */
+
+  /* ── Secondary Fixed Tokens ── */
+  --secondary-fixed:           #D0E4FF;  /* schemes.dark.secondaryFixed */
+  --on-secondary-fixed:        #001D34;  /* schemes.dark.onSecondaryFixed */
+  --secondary-fixed-dim:       #9BCBFF;  /* schemes.dark.secondaryFixedDim */
+  --on-secondary-fixed-variant:#004A79;  /* schemes.dark.onSecondaryFixedVariant */
+
+  /* ── Tertiary Containerized Tokens (Cyan Accent) ── */
+  --tertiary:                  #83DCFB;  /* schemes.dark.tertiary */
+  --tertiary-foreground:       #003543;  /* schemes.dark.onTertiary */
+  --tertiary-container:        #66C0DE;  /* schemes.dark.tertiaryContainer */
+  --on-tertiary-container:     #004D5F;  /* schemes.dark.onTertiaryContainer */
+  --tertiary-container-text:   #B6EBFF;
+
+  /* ── Tertiary Fixed Tokens ── */
+  --tertiary-fixed:            #B6EBFF;  /* schemes.dark.tertiaryFixed */
+  --on-tertiary-fixed:         #001F28;  /* schemes.dark.onTertiaryFixed */
+  --tertiary-fixed-dim:        #79D2F1;  /* schemes.dark.tertiaryFixedDim */
+  --on-tertiary-fixed-variant: #004E60;  /* schemes.dark.onTertiaryFixedVariant */
+
+  /* ── 7 Surface Elevation Containers (Dark Mode Exact Inverse) ── */
+  --background:                #0E1013;  /* Base Canvas */
+  --foreground:                #EDEDEF;  /* High legibility neutral text */
+  --on-background:             #EDEDEF;
+  --surface:                   #141416;  /* Base surface */
+  --on-surface:                #EDEDEF;
+  --surface-dim:               #090A0C;  /* Level 0: Deepest dim baseline */
+  --surface-container-lowest:  #0E1013;  /* Level 1: Canvas ground */
+  --surface-container-low:     #141416;  /* Level 2: Outer section container */
+  --surface-container:         #18181B;  /* Level 3: Subsection container */
+  --surface-container-high:    #202024;  /* Level 4: Nested card / tile */
+  --surface-container-highest: #27272B;  /* Level 5: Highest chip / active badge */
+  --surface-bright:            #333338;  /* Level 6: Floating popover / bright */
+
+  /* ── Surface Variant Containers ── */
+  --surface-variant:           #202024;
+  --on-surface-variant:        #A1A1AA;
+  --inverse-surface:           #EDEDEF;
+  --inverse-on-surface:        #16171A;
+
+  /* ── Cards / Popovers ── */
+  --card:                      #141416;
+  --card-foreground:           #EDEDEF;
+  --popover:                   #141416;
+  --popover-foreground:        #EDEDEF;
+
+  /* ── Borders & Outlines (Tonal Surface V0 Mode) ── */
+  --border:                    transparent;
+  --border-light:              transparent;
+  --outline:                   transparent;
+  --outline-variant:           transparent;
+  --sidebar-border:            transparent;
+  --shadow:                    0 1px 3px 0 rgba(0, 0, 0, 0.35), 0 2px 6px -1px rgba(0, 0, 0, 0.25);
+  --scrim:                     #000000;
+
+  /* ── Destructive / Error ── */
+  --destructive:               #FFB4AB;  /* schemes.dark.error */
+  --destructive-foreground:    #690005;  /* schemes.dark.onError */
+  --error-container:           #93000A;  /* schemes.dark.errorContainer */
+  --on-error-container:        #FFDAD6;  /* schemes.dark.onErrorContainer */
+
+  /* ── Controls & State ── */
+  --muted:                     #1B1D22;  /* surfaceContainerLow */
+  --muted-foreground:          #9EA2AE;  /* onSurfaceVariant */
+  --accent:                    #282C34;  /* surfaceContainerHigh */
+  --accent-foreground:         #EDEDEF;  /* onSurface */
+  --input:                     #1B1D22;  /* surfaceContainerLow */
+  --input-background:          #1B1D22;  /* surfaceContainerLow */
+  --switch-background:         #282C36;  /* outlineVariant */
+  --ring:                      #B5CCE3;  /* primary */
+  --brand-accent:              #B5CCE3;
+  --brand-accent-dark:         #194BB7;
+  --brand-accent-light:        #B5CCE3;
+  --sidebar:                   #15171B;
+  --sidebar-foreground:        #EDEDEF;
+  --sidebar-primary:           #B5CCE3;
+  --sidebar-primary-foreground:#061A47;
+  --sidebar-accent:            #21242B;
+  --sidebar-accent-foreground: #EDEDEF;
+  --sidebar-border:            var(--primary);
+  --sidebar-ring:              #B5CCE3;
+
+  /* ── Hover / Selected Interaction States ── */
+  --state-hover:               rgba(237, 237, 239, 0.08);
+  --state-primary-hover:       rgba(181, 204, 227, 0.08);
+  --state-selected:            rgba(237, 237, 239, 0.12);
+  --state-primary-selected:    rgba(181, 204, 227, 0.12);
+
+  /* ── Semantic State Tokens (Inverted for Dark) ── */
+  --state-error:               #FFB4AB;
+  --state-error-foreground:    #690005;
+  --state-error-container:     #93000A;
+  --state-on-error-container:  #FFDAD6;
+
+  --state-warning:             #FFD39B;
+  --state-warning-foreground:  #452B00;
+  --state-warning-container:   #633F00;
+  --state-on-warning-container:#FFDDB4;
+
+  --state-success:             #81C784;
+  --state-success-foreground:  #003314;
+  --state-success-container:   #1B5E20;
+  --state-on-success-container:#C8E6C9;
+
+  --state-info:                #83DCFB;
+  --state-info-foreground:     #003543;
+  --state-info-container:      #004D5F;
+  --state-on-info-container:   #B6EBFF;
+
+  --state-debug:               #9E9EA4;
+  --state-debug-foreground:    #1A1A1E;
+  --state-debug-container:     #323236;
+  --state-on-debug-container:  #E2E2E6;
+
+  --state-disabled-container:  #282A30;
+  --state-disabled-content:    #6E7380;
+
+  /* ── Legacy Aliases ── */
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-primary-container:   var(--primary-container);
+  --color-on-primary-container:var(--on-primary-container);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container:var(--on-secondary-container);
+  --color-tertiary:            var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container:  var(--tertiary-container);
+  --color-on-tertiary-container:var(--on-tertiary-container);
+  --color-destructive:         var(--destructive);
+  --color-destructive-foreground:var(--destructive-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low:    var(--surface-container-low);
+  --color-surface-container:        var(--surface-container);
+  --color-surface-container-high:   var(--surface-container-high);
+  --color-surface-container-highest:var(--surface-container-highest);
+  --color-outline:             var(--outline);
+  --color-outline-variant:     var(--outline-variant);
+  --color-brand-accent:        var(--brand-accent);
+  --color-brand-accent-dark:   var(--brand-accent-dark);
+  --color-brand-accent-light:  var(--brand-accent-light);
+  --color-state-fatal:         var(--state-fatal);
+  --color-state-fatal-foreground: var(--state-fatal-foreground);
+  --color-state-fatal-container: var(--state-fatal-container);
+  --color-state-on-fatal-container: var(--state-on-fatal-container);
+  --color-state-error:         var(--state-error);
+  --color-state-error-foreground: var(--state-error-foreground);
+  --color-state-error-container: var(--state-error-container);
+  --color-state-on-error-container: var(--state-on-error-container);
+  --color-state-warning:       var(--state-warning);
+  --color-state-warning-foreground: var(--state-warning-foreground);
+  --color-state-warning-container: var(--state-warning-container);
+  --color-state-on-warning-container: var(--state-on-warning-container);
+  --color-state-info:          var(--state-info);
+  --color-state-info-foreground: var(--state-info-foreground);
+  --color-state-info-container: var(--state-info-container);
+  --color-state-on-info-container: var(--state-on-info-container);
+  --color-state-success:       var(--state-success);
+  --color-state-success-foreground: var(--state-success-foreground);
+  --color-state-success-container: var(--state-success-container);
+  --color-state-on-success-container: var(--state-on-success-container);
+  --color-state-debug:         var(--state-debug);
+  --color-state-debug-foreground: var(--state-debug-foreground);
+  --color-state-debug-container: var(--state-debug-container);
+  --color-state-on-debug-container: var(--state-on-debug-container);
+  --color-state-disabled-container: var(--state-disabled-container);
+  --color-state-disabled-content: var(--state-disabled-content);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: var(--outline-variant) transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--outline-variant);
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--outline);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}
+
+ /* ════════════════════════════════════════════════════════════════════
+   V0 BY VERCEL CRISP MINIMALIST SYSTEM (BLUE V1 EXCLUSIVE)
+   - Max 2px crisp light shadows (no smudging or smoothing)
+   - Pure underline tabs (zero background, zero square hover)
+   - Crisp hair-thin header bottom lines & table bottom lines
+   - Clean non-blue navigation cards (neutral white, tinted ONLY when selected, NO outlines)
+   - Pristine notifications (strictly transparent backdrop / zero opaque band)
+   - Very slight halo ONLY for Ask OPTO button & focused fields
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Global Outline Elimination ── */
+*,
+*::before,
+*::after {
+  outline: none !important;
+}
+
+/* ── Top Navigation Bar: Solid Clean Surface (Strictly No Glass / No Blur) ── */
+header,
+header.sticky,
+.sticky.top-0,
+div[class*="sticky top-0"],
+div[class*="sticky"][class*="top-0"],
+nav[aria-label="breadcrumb"],
+div[class*="border-b"][class*="sticky"],
+div[class*="border-b border-[var(--border)]"][class*="sticky"] {
+  background: #FFFFFF !important;
+  background-color: #FFFFFF !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark header,
+.dark header.sticky,
+.dark .sticky.top-0,
+.dark div[class*="sticky top-0"],
+.dark div[class*="sticky"][class*="top-0"],
+.dark nav[aria-label="breadcrumb"],
+.dark div[class*="border-b"][class*="sticky"],
+.dark div[class*="border-b border-[var(--border)]"][class*="sticky"] {
+  background: #141416 !important;
+  background-color: #141416 !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Sidebar Divider */
+aside,
+div[class*="border-r border-[var(--sidebar-border)]"] {
+  border-right: 1px solid var(--sidebar-border) !important;
+}
+
+/* ── Crisp, Light Shadows (Strictly Max 2px, No Heavy/Floaty Blur / No Smudging) ── */
+.bg-\[var\(--card\)\],
+.bg-\[var\(--surface\)\],
+.bg-\[var\(--surface-container-lowest\)\] {
+  border: none !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  transition: box-shadow 0.15s ease !important;
+}
+
+.dark .bg-\[var\(--card\)\],
+.dark .bg-\[var\(--surface\)\],
+.dark .bg-\[var\(--surface-container-lowest\)\] {
+  border: none !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.35) !important;
+}
+
+.bg-\[var\(--card\)\]:hover,
+.bg-\[var\(--surface\)\]:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark .bg-\[var\(--card\)\]:hover,
+.dark .bg-\[var\(--surface\)\]:hover {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.45) !important;
+}
+
+/* ── Tonal Sub-containers ── */
+.bg-\[var\(--surface-container-low\)\]:not(div[class*="border-b"]):not(button),
+.bg-\[var\(--surface-container\)\]:not(div[class*="border-b"]):not(button) {
+  border: none !important;
+}
+
+.bg-\[var\(--surface-container-high\)\],
+.bg-\[var\(--surface-container-highest\)\] {
+  border: none !important;
+}
+
+/* ── Underline Style for Tabs (Strictly v0 by Vercel Design Language) ── */
+
+/* Tab Container Divider Line (Light & Dark Mode) */
+div[class*="border-b"]:has(> button),
+div[class*="border-b"]:has(button),
+.flex.border-b:has(> button),
+.flex.border-b:has(button),
+div[class*="border-b border-[var(--border)]"]:has(button),
+.fixed.right-0 div[class*="border-b"]:has(button),
+div[class*="fixed"][class*="right-0"] div[class*="border-b"]:has(button) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+  background-color: transparent !important;
+}
+
+.dark div[class*="border-b"]:has(> button),
+.dark div[class*="border-b"]:has(button),
+.dark .flex.border-b:has(> button),
+.dark .flex.border-b:has(button),
+.dark div[class*="border-b border-[var(--border)]"]:has(button),
+.dark .fixed.right-0 div[class*="border-b"]:has(button),
+.dark div[class*="fixed"][class*="right-0"] div[class*="border-b"]:has(button) {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  background-color: transparent !important;
+}
+
+/* Base Tab Resets: zero background, zero rounded box, zero square hover, zero box-shadow */
+button[class*="border-b-2"],
+button[class*="border-b"],
+button[role="tab"],
+[role="tab"],
+div[class*="border-b"] > button,
+div[class*="border-b"] button,
+.flex.border-b > button,
+.flex.border-b button,
+.fixed.right-0 div[class*="border-b"] button,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button,
+nav.flex > button {
+  background: transparent !important;
+  background-color: transparent !important;
+  border-radius: 0 !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  box-shadow: none !important;
+  outline: none !important;
+  transform: none !important;
+  transition: border-color 0.15s ease, color 0.15s ease !important;
+}
+
+/* Inactive Tab State (Light & Dark Mode) */
+div[class*="border-b"] > button[class*="border-transparent"],
+div[class*="border-b"] button[class*="border-transparent"],
+.flex.border-b > button[class*="border-transparent"],
+.flex.border-b button[class*="border-transparent"],
+.fixed.right-0 div[class*="border-b"] button[class*="border-transparent"],
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-transparent"],
+div[class*="border-b"] > button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]),
+div[class*="border-b"] button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]),
+.flex.border-b > button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]),
+.flex.border-b button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]),
+.fixed.right-0 div[class*="border-b"] button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]),
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]),
+button[class*="border-transparent"]:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([data-state="active"]),
+button[role="tab"][data-state="inactive"],
+button[role="tab"][aria-selected="false"],
+[role="tab"][data-state="inactive"],
+[role="tab"][aria-selected="false"] {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: transparent !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--muted-foreground) !important;
+  box-shadow: none !important;
+  margin-bottom: -1px !important;
+}
+
+/* Inactive Tab Hover: Subtle preview underline only (Light & Dark Mode) */
+div[class*="border-b"] > button[class*="border-transparent"]:hover,
+div[class*="border-b"] button[class*="border-transparent"]:hover,
+.flex.border-b > button[class*="border-transparent"]:hover,
+.flex.border-b button[class*="border-transparent"]:hover,
+.fixed.right-0 div[class*="border-b"] button[class*="border-transparent"]:hover,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-transparent"]:hover,
+div[class*="border-b"] > button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]):hover,
+div[class*="border-b"] button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]):hover,
+.flex.border-b > button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]):hover,
+.flex.border-b button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]):hover,
+.fixed.right-0 div[class*="border-b"] button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]):hover,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):not([class*="text-[var(--primary)]"]):not([data-state="active"]):not([aria-selected="true"]):hover,
+button[class*="border-transparent"]:not([class*="border-[var(--primary)]"]):not([class*="border-primary"]):hover,
+button[role="tab"][data-state="inactive"]:hover,
+button[role="tab"][aria-selected="false"]:hover {
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--foreground) !important;
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 30%, transparent) !important;
+  border-bottom: 2px solid color-mix(in srgb, var(--foreground) 30%, transparent) !important;
+  box-shadow: none !important;
+  margin-bottom: -1px !important;
+}
+
+/* Active / Selected Tab State (Side Panel Tabs & Page Tabs): Unshakeable 2px Primary Blue Underline & Primary Text (Light & Dark Mode) */
+div[class*="border-b"] > button[class*="border-[var(--primary)]"],
+div[class*="border-b"] > button[class*="border-primary"],
+div[class*="border-b"] > button[class*="text-[var(--primary)]"],
+div[class*="border-b"] > button[class*="font-semibold"]:not([class*="border-transparent"]),
+div[class*="border-b"] > button[data-state="active"],
+div[class*="border-b"] > button[aria-selected="true"],
+div[class*="border-b"] button[class*="border-[var(--primary)]"],
+div[class*="border-b"] button[class*="border-primary"],
+div[class*="border-b"] button[class*="text-[var(--primary)]"],
+div[class*="border-b"] button[class*="font-semibold"]:not([class*="border-transparent"]),
+div[class*="border-b"] button[data-state="active"],
+div[class*="border-b"] button[aria-selected="true"],
+.flex.border-b > button[class*="border-[var(--primary)]"],
+.flex.border-b > button[class*="border-primary"],
+.flex.border-b > button[class*="text-[var(--primary)]"],
+.flex.border-b > button[class*="font-semibold"]:not([class*="border-transparent"]),
+.flex.border-b button[class*="border-[var(--primary)]"],
+.flex.border-b button[class*="border-primary"],
+.flex.border-b button[class*="text-[var(--primary)]"],
+.flex.border-b button[class*="font-semibold"]:not([class*="border-transparent"]),
+.fixed.right-0 div[class*="border-b"] button[class*="border-[var(--primary)]"],
+.fixed.right-0 div[class*="border-b"] button[class*="border-primary"],
+.fixed.right-0 div[class*="border-b"] button[class*="text-[var(--primary)]"],
+.fixed.right-0 div[class*="border-b"] button[class*="font-semibold"]:not([class*="border-transparent"]),
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-[var(--primary)]"],
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-primary"],
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="text-[var(--primary)]"],
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="font-semibold"]:not([class*="border-transparent"]),
+button[class*="border-[var(--primary)]"],
+button[class*="border-primary"],
+button[class*="border-b-2"][class*="border-[var(--primary)]"],
+button[class*="border-b-2"][class*="border-primary"],
+button[class*="border-b"][class*="border-[var(--primary)]"],
+button[class*="border-b"][class*="border-primary"],
+button[role="tab"][data-state="active"],
+button[role="tab"][aria-selected="true"],
+[role="tab"][data-state="active"],
+[role="tab"][aria-selected="true"] {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: var(--primary) !important;
+  border-bottom: 2px solid var(--primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--primary) !important;
+  box-shadow: none !important;
+  font-weight: 600 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-bottom: -1px !important;
+  opacity: 1 !important;
+}
+
+/* Active Tab on Hover: Stays solidly underlined in primary blue (Light & Dark Mode) */
+div[class*="border-b"] > button[class*="border-[var(--primary)]"]:hover,
+div[class*="border-b"] > button[class*="border-primary"]:hover,
+div[class*="border-b"] > button[class*="text-[var(--primary)]"]:hover,
+div[class*="border-b"] > button[class*="font-semibold"]:not([class*="border-transparent"]):hover,
+div[class*="border-b"] > button[data-state="active"]:hover,
+div[class*="border-b"] > button[aria-selected="true"]:hover,
+div[class*="border-b"] button[class*="border-[var(--primary)]"]:hover,
+div[class*="border-b"] button[class*="border-primary"]:hover,
+div[class*="border-b"] button[class*="text-[var(--primary)]"]:hover,
+div[class*="border-b"] button[class*="font-semibold"]:not([class*="border-transparent"]):hover,
+div[class*="border-b"] button[data-state="active"]:hover,
+div[class*="border-b"] button[aria-selected="true"]:hover,
+.flex.border-b > button[class*="border-[var(--primary)]"]:hover,
+.flex.border-b > button[class*="border-primary"]:hover,
+.flex.border-b > button[class*="text-[var(--primary)]"]:hover,
+.flex.border-b > button[class*="font-semibold"]:not([class*="border-transparent"]):hover,
+.flex.border-b button[class*="border-[var(--primary)]"]:hover,
+.flex.border-b button[class*="border-primary"]:hover,
+.flex.border-b button[class*="text-[var(--primary)]"]:hover,
+.flex.border-b button[class*="font-semibold"]:not([class*="border-transparent"]):hover,
+.fixed.right-0 div[class*="border-b"] button[class*="border-[var(--primary)]"]:hover,
+.fixed.right-0 div[class*="border-b"] button[class*="border-primary"]:hover,
+.fixed.right-0 div[class*="border-b"] button[class*="text-[var(--primary)]"]:hover,
+.fixed.right-0 div[class*="border-b"] button[class*="font-semibold"]:not([class*="border-transparent"]):hover,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-[var(--primary)]"]:hover,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-primary"]:hover,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="text-[var(--primary)]"]:hover,
+div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="font-semibold"]:not([class*="border-transparent"]):hover,
+button[class*="border-[var(--primary)]"]:hover,
+button[class*="border-primary"]:hover,
+button[class*="border-b-2"][class*="border-[var(--primary)]"]:hover,
+button[class*="border-b-2"][class*="border-primary"]:hover,
+button[class*="border-b"][class*="border-[var(--primary)]"]:hover,
+button[class*="border-b"][class*="border-primary"]:hover,
+button[role="tab"][data-state="active"]:hover,
+button[role="tab"][aria-selected="true"]:hover,
+[role="tab"][data-state="active"]:hover,
+[role="tab"][aria-selected="true"]:hover {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-bottom-width: 2px !important;
+  border-bottom-style: solid !important;
+  border-bottom-color: var(--primary) !important;
+  border-bottom: 2px solid var(--primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--primary) !important;
+  box-shadow: none !important;
+  font-weight: 600 !important;
+  position: relative !important;
+  z-index: 10 !important;
+  margin-bottom: -1px !important;
+  opacity: 1 !important;
+}
+
+/* Dark Mode Active Tabs */
+.dark div[class*="border-b"] > button[class*="border-[var(--primary)]"],
+.dark div[class*="border-b"] > button[class*="border-primary"],
+.dark div[class*="border-b"] > button[class*="text-[var(--primary)]"],
+.dark div[class*="border-b"] > button[data-state="active"],
+.dark div[class*="border-b"] > button[aria-selected="true"],
+.dark div[class*="border-b"] button[class*="border-[var(--primary)]"],
+.dark div[class*="border-b"] button[class*="border-primary"],
+.dark div[class*="border-b"] button[class*="text-[var(--primary)]"],
+.dark .flex.border-b > button[class*="border-[var(--primary)]"],
+.dark .flex.border-b > button[class*="border-primary"],
+.dark .flex.border-b > button[class*="text-[var(--primary)]"],
+.dark .flex.border-b button[class*="border-[var(--primary)]"],
+.dark .flex.border-b button[class*="border-primary"],
+.dark .flex.border-b button[class*="text-[var(--primary)]"],
+.dark .fixed.right-0 div[class*="border-b"] button[class*="border-[var(--primary)]"],
+.dark .fixed.right-0 div[class*="border-b"] button[class*="border-primary"],
+.dark .fixed.right-0 div[class*="border-b"] button[class*="text-[var(--primary)]"],
+.dark div[class*="fixed"][class*="right-0"] div[class*="border-b"] button[class*="border-[var(--primary)]"],
+.dark button[class*="border-[var(--primary)]"],
+.dark button[class*="border-primary"],
+.dark button[class*="border-b-2"][class*="border-[var(--primary)]"],
+.dark button[class*="border-b-2"][class*="border-primary"],
+.dark button[class*="border-b"][class*="border-[var(--primary)]"],
+.dark button[role="tab"][data-state="active"],
+.dark [role="tab"][data-state="active"] {
+  border-bottom: 2px solid var(--primary) !important;
+  background: transparent !important;
+  background-color: transparent !important;
+  color: var(--primary) !important;
+  box-shadow: none !important;
+  font-weight: 600 !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ── Left Navigation (Sidebar) Selection & Architecture ──
+   Rule: ONLY Ask OPTO is solid primary filled.
+   All other tabs when selected: 20% primary transparency + on-primary/primary color text (No outlines).
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Left Nav: Global Reset (Strictly No Outlines) ── */
+aside button,
+div[class*="border-r border-[var(--sidebar-border)]"] button,
+aside nav button {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0px !important;
+}
+
+/* ── 2. Left Nav: Selected / Active Tabs (Navigation & Pinned: 20% Primary Transparency, Primary Text, 0px Outlines, No Halo) ── */
+aside button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"],
+aside button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\],
+aside button:not(:has(svg.lucide-sparkles))[class*="bg-[var(--primary)]"],
+aside button:not(:has(svg.lucide-sparkles)).bg-\[var\(--primary\)\],
+aside button:not(:has(svg.lucide-sparkles))[class*="border-primary"],
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"],
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\],
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles))[class*="bg-[var(--primary)]"],
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles)).bg-\[var\(--primary\)\],
+aside nav button[class*="bg-[var(--primary)]"],
+aside nav button.bg-\[var\(--primary\)\] {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: color-mix(in srgb, var(--primary) 20%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 20%, transparent) !important;
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+aside button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"] *,
+aside button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\],
+aside button:not(:has(svg.lucide-sparkles))[class*="bg-[var(--primary)]"] *,
+aside button:not(:has(svg.lucide-sparkles)).bg-\[var\(--primary\)\] *,
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"] *,
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\],
+aside nav button[class*="bg-[var(--primary)]"] *,
+aside nav button.bg-\[var\(--primary\)\] * {
+  color: var(--primary) !important;
+}
+
+aside button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"] svg,
+aside button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\] svg,
+aside button:not(:has(svg.lucide-sparkles))[class*="bg-[var(--primary)]"] svg,
+aside button:not(:has(svg.lucide-sparkles)).bg-\[var\(--primary\)\] svg,
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"] svg,
+div[class*="border-r border-[var(--sidebar-border)]"] button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\] svg,
+aside nav button[class*="bg-[var(--primary)]"] svg,
+aside nav button.bg-\[var\(--primary\)\] svg {
+  color: var(--primary) !important;
+}
+
+/* ── 3. Left Nav: Hover on Selected & Unselected Tabs ── */
+aside button:not(:has(svg.lucide-sparkles))[class*="border-[var(--primary)]"]:hover,
+aside button:not(:has(svg.lucide-sparkles)).border-\[var\(--primary\)\]:hover,
+aside button:not(:has(svg.lucide-sparkles))[class*="bg-[var(--primary)]"]:hover,
+aside button:not(:has(svg.lucide-sparkles)).bg-\[var\(--primary\)\]:hover {
+  background: color-mix(in srgb, var(--primary) 26%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 26%, transparent) !important;
+  color: var(--primary) !important;
+}
+
+aside button:not(:has(svg.lucide-sparkles)):not([class*="border-[var(--primary)]"]):not([class*="bg-[var(--primary)]"]):hover {
+  background: color-mix(in srgb, var(--primary) 8%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 8%, transparent) !important;
+}
+
+/* ── 4. Primary Buttons, Badges, Chips & Toggles (Preserve Solid Primary Fill, Exclude Non-AskOPTO Sidebar Tabs) ── */
+button.bg-\[var\(--primary\)\]:not(aside button:not(:has(svg.lucide-sparkles))),
+button[class~="bg-[var(--primary)]"]:not(aside button:not(:has(svg.lucide-sparkles))),
+span.bg-\[var\(--primary\)\],
+span[class~="bg-[var(--primary)]"],
+div.bg-\[var\(--primary\)\]:not([class*="absolute"]):not([class*="rounded-full"]):not(aside *),
+div[class~="bg-[var(--primary)]"][class*="rounded"]:not([class*="absolute"]):not([class*="rounded-full"]):not(aside *) {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+  border-color: transparent !important;
+}
+
+button.bg-\[var\(--primary\)\]:not(aside button:not(:has(svg.lucide-sparkles))) *,
+button[class~="bg-[var(--primary)]"]:not(aside button:not(:has(svg.lucide-sparkles))) *,
+span.bg-\[var\(--primary\)\] *,
+span[class~="bg-[var(--primary)]"] * {
+  color: var(--primary-foreground) !important;
+}
+
+button.bg-\[var\(--primary\)\]:not(aside button:not(:has(svg.lucide-sparkles))) svg,
+button[class~="bg-[var(--primary)]"]:not(aside button:not(:has(svg.lucide-sparkles))) svg,
+span.bg-\[var\(--primary\)\] svg,
+span[class~="bg-[var(--primary)]"] svg {
+  color: var(--primary-foreground) !important;
+}
+
+button.bg-\[var\(--primary\)\]:not(aside button:not(:has(svg.lucide-sparkles))):hover,
+button[class~="bg-[var(--primary)]"]:not(aside button:not(:has(svg.lucide-sparkles))):hover {
+  background: color-mix(in srgb, var(--primary) 90%, #000000) !important;
+  background-color: color-mix(in srgb, var(--primary) 90%, #000000) !important;
+  color: var(--primary-foreground) !important;
+}
+
+/* ── 5. Ask OPTO Button: Strictly the ONLY Element in Left Nav with Solid Primary Blue Fill & Crisp Halo ── */
+button[class*="bg-[var(--primary)]"]:has(svg.lucide-sparkles),
+button:has(svg.lucide-sparkles)[class*="bg-[var(--primary)]"],
+aside button:has(svg.lucide-sparkles),
+aside button[class*="bg-[var(--primary)]"]:has(svg.lucide-sparkles) {
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+  border: 0 !important;
+  outline: none !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.06), 0 0 0 1px color-mix(in srgb, var(--primary) 35%, transparent), 0 0 6px 0 color-mix(in srgb, var(--primary) 22%, transparent) !important;
+  transition: box-shadow 0.15s ease, transform 0.15s ease !important;
+}
+
+button[class*="bg-[var(--primary)]"]:has(svg.lucide-sparkles) *,
+button:has(svg.lucide-sparkles)[class*="bg-[var(--primary)]"] * {
+  color: var(--primary-foreground) !important;
+}
+
+button[class*="bg-[var(--primary)]"]:has(svg.lucide-sparkles):hover,
+button:has(svg.lucide-sparkles)[class*="bg-[var(--primary)]"]:hover,
+div[class*="px-4 py-2"] button[class*="bg-[var(--primary)]"]:hover {
+  background: color-mix(in srgb, var(--primary) 88%, #000000) !important;
+  background-color: color-mix(in srgb, var(--primary) 88%, #000000) !important;
+  color: var(--primary-foreground) !important;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.10), 0 0 0 1px color-mix(in srgb, var(--primary) 50%, transparent), 0 0 10px 0 color-mix(in srgb, var(--primary) 35%, transparent) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ── Navigation Page Cards: Two Levels Architecture ──
+   Level 1: Parent Card (Main Categories)
+   Level 2: Child Card (Sub-Options & Tertiary Grid)
+   States: Default State, Hover State (Primary 10%), Selected State (Outline)
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. DEFAULT STATE (Parent & Child Cards) ── */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"],
+.flex.gap-6.mb-8 > button.group:not(.border-\[var\(--primary\)\]):not([class~="border-[var(--primary)]"]),
+div[class*="grid-cols-2"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+div[class*="grid-cols-3"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+div[class*="grid-cols-4"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+div[class*="grid-cols-5"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+div[class*="grid-cols-6"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"],
+div[class*="grid-cols-"] > button.group:not(.border-\[var\(--primary\)\]):not([class~="border-[var(--primary)]"]) {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0px !important;
+  transform: none !important;
+  background: #F4F5F8 !important;
+  background-color: #F4F5F8 !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05) !important;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease !important;
+}
+
+.dark .flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"],
+.dark .flex.gap-6.mb-8 > button.group:not(.border-\[var\(--primary\)\]):not([class~="border-[var(--primary)]"]),
+.dark div[class*="grid-cols-2"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+.dark div[class*="grid-cols-3"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+.dark div[class*="grid-cols-4"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+.dark div[class*="grid-cols-5"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+.dark div[class*="grid-cols-6"][class*="gap-4"] > button.group[class*="border-[var(--border)]"],
+.dark div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"],
+.dark div[class*="grid-cols-"] > button.group:not(.border-\[var\(--primary\)\]):not([class~="border-[var(--primary)]"]) {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0px !important;
+  transform: none !important;
+  background: #18191E !important;
+  background-color: #18191E !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Default Icon Container */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] div[class*="w-16"],
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"] div[class*="w-14"] {
+  background: #E8EAEE !important;
+  background-color: #E8EAEE !important;
+}
+
+.dark .flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] div[class*="w-16"],
+.dark div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"] div[class*="w-14"] {
+  background: #23252C !important;
+  background-color: #23252C !important;
+}
+
+/* Default Icons */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] svg,
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"] svg {
+  color: #18191C !important;
+}
+
+.dark .flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] svg,
+.dark div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"] svg {
+  color: #EDEDEF !important;
+}
+
+/* Default Typography */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] h3,
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"] h4 {
+  color: var(--foreground) !important;
+  font-weight: 600 !important;
+}
+
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] p {
+  color: var(--muted-foreground) !important;
+}
+
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] div[class*="text-xs"],
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"] div[class*="text-xs"] * {
+  color: var(--muted-foreground) !important;
+}
+
+/* ── 2. HOVER STATE (Primary 10%) ── */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"]:hover,
+div[class*="grid-cols-2"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+div[class*="grid-cols-3"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+div[class*="grid-cols-4"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+div[class*="grid-cols-5"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+div[class*="grid-cols-6"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"]:hover {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  transform: none !important;
+  background: color-mix(in srgb, var(--primary) 10%, #FFFFFF) !important;
+  background-color: color-mix(in srgb, var(--primary) 10%, #FFFFFF) !important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark .flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"]:hover,
+.dark div[class*="grid-cols-2"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+.dark div[class*="grid-cols-3"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+.dark div[class*="grid-cols-4"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+.dark div[class*="grid-cols-5"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+.dark div[class*="grid-cols-6"][class*="gap-4"] > button.group[class*="border-[var(--border)]"]:hover,
+.dark div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"]:hover {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  transform: none !important;
+  background: color-mix(in srgb, var(--primary) 10%, #141416) !important;
+  background-color: color-mix(in srgb, var(--primary) 10%, #141416) !important;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.45) !important;
+}
+
+/* Hover Icon Container */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"]:hover div[class*="w-16"],
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"]:hover div[class*="w-14"] {
+  background: color-mix(in srgb, var(--primary) 14%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 14%, transparent) !important;
+}
+
+/* Hover Icons */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"]:hover svg,
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"]:hover svg {
+  color: var(--primary) !important;
+}
+
+/* Hover Typography */
+.flex.gap-6.mb-8 > button.group[class*="border-[var(--border)]"]:hover h3,
+div[class*="grid-cols-"] > button.group[class*="border-[var(--border)]"]:hover h4 {
+  color: var(--primary) !important;
+}
+
+/* ── 3. SELECTED STATE (Outline) ── */
+
+/* Level 1: Parent Card (Selected State - Outline) */
+.flex.gap-6.mb-8 > button.group.flex-1.relative:not([class*="border-[var(--border)]"]),
+.flex.gap-6.mb-8 > button.group.flex-1.relative[class~="border-[var(--primary)]"],
+.flex.gap-6.mb-8 > button.group.flex-1.relative.border-\[var\(--primary\)\]:not([class*="border-[var(--border)]"]) {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  transform: none !important;
+  background: color-mix(in srgb, var(--primary) 12%, #FFFFFF) !important;
+  background-color: color-mix(in srgb, var(--primary) 12%, #FFFFFF) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 0 0 2px var(--primary) !important;
+}
+
+.dark .flex.gap-6.mb-8 > button.group.flex-1.relative:not([class*="border-[var(--border)]"]),
+.dark .flex.gap-6.mb-8 > button.group.flex-1.relative[class~="border-[var(--primary)]"],
+.dark .flex.gap-6.mb-8 > button.group.flex-1.relative.border-\[var\(--primary\)\]:not([class*="border-[var(--border)]"]) {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  transform: none !important;
+  background: color-mix(in srgb, var(--primary) 20%, #141416) !important;
+  background-color: color-mix(in srgb, var(--primary) 20%, #141416) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.45), 0 0 0 2px var(--primary) !important;
+}
+
+/* Level 1: Selected Parent Card Icon Container & Icon */
+.flex.gap-6.mb-8 > button.group:not([class*="border-[var(--border)]"]) div[class*="w-16"] {
+  background: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+}
+
+.flex.gap-6.mb-8 > button.group:not([class*="border-[var(--border)]"]) div[class*="w-16"] svg {
+  color: var(--primary) !important;
+}
+
+/* Level 1: Selected Parent Card Typography */
+.flex.gap-6.mb-8 > button.group:not([class*="border-[var(--border)]"]) h3 {
+  color: var(--primary) !important;
+  font-weight: 700 !important;
+}
+
+.flex.gap-6.mb-8 > button.group:not([class*="border-[var(--border)]"]) p {
+  color: var(--foreground) !important;
+  opacity: 0.85 !important;
+}
+
+.flex.gap-6.mb-8 > button.group:not([class*="border-[var(--border)]"]) div[class*="text-xs"],
+.flex.gap-6.mb-8 > button.group:not([class*="border-[var(--border)]"]) div[class*="text-xs"] * {
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+/* Level 2: Child Card (Selected State - Outline) */
+div[class*="grid-cols-2"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+div[class*="grid-cols-3"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+div[class*="grid-cols-4"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+div[class*="grid-cols-5"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+div[class*="grid-cols-6"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+div[class*="grid-cols-"] > button.group:not([class*="border-[var(--border)]"]),
+div[class*="grid-cols-"] > button.group[class~="border-[var(--primary)]"] {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  transform: none !important;
+  background: color-mix(in srgb, var(--primary) 10%, #FFFFFF) !important;
+  background-color: color-mix(in srgb, var(--primary) 10%, #FFFFFF) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08), 0 0 0 2px var(--primary) !important;
+}
+
+.dark div[class*="grid-cols-2"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+.dark div[class*="grid-cols-3"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+.dark div[class*="grid-cols-4"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+.dark div[class*="grid-cols-5"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+.dark div[class*="grid-cols-6"][class*="gap-4"] > button.group:not([class*="border-[var(--border)]"]),
+.dark div[class*="grid-cols-"] > button.group:not([class*="border-[var(--border)]"]),
+.dark div[class*="grid-cols-"] > button.group[class~="border-[var(--primary)]"] {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  transform: none !important;
+  background: color-mix(in srgb, var(--primary) 18%, #141416) !important;
+  background-color: color-mix(in srgb, var(--primary) 18%, #141416) !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.45), 0 0 0 2px var(--primary) !important;
+}
+
+/* Level 2: Selected Child Card Icon Container & Icon */
+div[class*="grid-cols-"] > button.group:not([class*="border-[var(--border)]"]) div[class*="w-14"] {
+  background: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+}
+
+div[class*="grid-cols-"] > button.group:not([class*="border-[var(--border)]"]) div[class*="w-14"] svg {
+  color: var(--primary) !important;
+}
+
+/* Level 2: Selected Child Card Title */
+div[class*="grid-cols-"] > button.group:not([class*="border-[var(--border)]"]) h4,
+div[class*="grid-cols-"] > button.group[class~="border-[var(--primary)]"] h4 {
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+}
+
+/* ── Navigation Card Pin / Star Button ── */
+button.group div[role="button"][class*="rounded-full"],
+button.group div[class*="absolute"][class*="rounded-full"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+button.group div[role="button"][class*="rounded-full"]:hover,
+button.group div[class*="absolute"][class*="rounded-full"]:hover {
+  background: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+}
+
+button.group div[role="button"][class*="rounded-full"] svg,
+button.group div[class*="absolute"][class*="rounded-full"] svg {
+  color: #94A3B8 !important;
+  fill: transparent !important;
+  transition: all 0.2s ease !important;
+}
+
+button.group div[role="button"][class*="rounded-full"]:hover svg,
+button.group div[class*="absolute"][class*="rounded-full"]:hover svg {
+  color: var(--primary) !important;
+  fill: color-mix(in srgb, var(--primary) 30%, transparent) !important;
+}
+
+/* Active Pinned State */
+button.group div[role="button"][class*="rounded-full"]:has(svg[class*="fill-[var(--primary)]"]),
+button.group div[class*="absolute"][class*="rounded-full"]:has(svg[class*="fill-[var(--primary)]"]) {
+  background: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 15%, transparent) !important;
+  opacity: 1 !important;
+}
+
+button.group div[role="button"][class*="rounded-full"] svg[class*="fill-[var(--primary)]"],
+button.group div[class*="absolute"][class*="rounded-full"] svg[class*="fill-[var(--primary)]"] {
+  color: var(--primary) !important;
+  fill: var(--primary) !important;
+}
+
+/* ── Selected Fields / Text Inputs: Very Slight Primary Focus Halo ── */
+input:focus,
+textarea:focus,
+select:focus,
+[contenteditable="true"]:focus,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+div[class*="focus-within:border-[var(--primary)]"]:focus-within {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05), 0 0 0 1px var(--primary), 0 0 6px 0 color-mix(in srgb, var(--primary) 22%, transparent) !important;
+}
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus,
+.dark [contenteditable="true"]:focus,
+.dark input:focus-visible,
+.dark textarea:focus-visible,
+.dark select:focus-visible,
+.dark div[class*="focus-within:border-[var(--primary)]"]:focus-within {
+  outline: none !important;
+  border-color: var(--primary) !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.35), 0 0 0 1px var(--primary), 0 0 6px 0 color-mix(in srgb, var(--primary) 28%, transparent) !important;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════
+   ── All Tables: Strictly No Outlines, Gradual Alternating Surface 1 / Surface 2 Rows, Elevated Header ──
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. Table Container & Table Resets (Strictly Zero Outlines / Zero Outer Borders) ── */
+table,
+thead,
+tbody,
+tr,
+th,
+td,
+div[class*="MasterTableContainer"],
+div[class*="rounded-xl border"]:has(table),
+div[class*="overflow-x-auto"]:has(table),
+div:has(> div > table),
+div:has(> table) {
+  border: none !important;
+  border-width: 0px !important;
+  border-style: none !important;
+  border-color: transparent !important;
+  outline: none !important;
+  outline-width: 0px !important;
+}
+
+table {
+  border-collapse: collapse !important;
+  border: none !important;
+  outline: none !important;
+  width: 100% !important;
+}
+
+table thead th,
+table tbody td {
+  border: none !important;
+  border-width: 0px !important;
+  outline: none !important;
+}
+
+/* ── 2. Table Header: Distinct Color Header ── */
+table thead tr,
+table thead th,
+table thead,
+div[role="rowgroup"]:first-child {
+  background: #E5E7EB !important;
+  background-color: #E5E7EB !important;
+  color: var(--foreground) !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+.dark table thead tr,
+.dark table thead th,
+.dark table thead,
+.dark div[role="rowgroup"]:first-child {
+  background: #202024 !important;
+  background-color: #202024 !important;
+  color: var(--foreground) !important;
+  font-weight: 600 !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+}
+
+table thead th,
+table thead th * {
+  color: var(--muted-foreground) !important;
+  font-weight: 600 !important;
+}
+
+/* ── 3. Table Rows: Gradual Alternating Colors (Surface 1 / Surface 2) ── */
+
+/* Surface 1: Odd Rows */
+table tbody tr:nth-child(odd),
+div[role="row"]:not(:first-child):nth-child(odd) {
+  background: #F9FAFB !important;
+  background-color: #F9FAFB !important;
+  border: none !important;
+}
+
+.dark table tbody tr:nth-child(odd),
+.dark div[role="row"]:not(:first-child):nth-child(odd) {
+  background: #141416 !important;
+  background-color: #141416 !important;
+  border: none !important;
+}
+
+/* Surface 2: Even Rows (Gradual Alternate) */
+table tbody tr:nth-child(even),
+div[role="row"]:not(:first-child):nth-child(even) {
+  background: #F3F4F6 !important;
+  background-color: #F3F4F6 !important;
+  border: none !important;
+}
+
+.dark table tbody tr:nth-child(even),
+.dark div[role="row"]:not(:first-child):nth-child(even) {
+  background: #18181B !important;
+  background-color: #18181B !important;
+  border: none !important;
+}
+
+/* Table Row Hover State */
+table tbody tr:hover,
+table tbody tr:hover td,
+table tbody tr:nth-child(odd):hover,
+table tbody tr:nth-child(even):hover,
+div[role="row"]:hover {
+  background: color-mix(in srgb, var(--primary) 10%, #F3F4F6) !important;
+  background-color: color-mix(in srgb, var(--primary) 10%, #F3F4F6) !important;
+}
+
+.dark table tbody tr:hover,
+.dark table tbody tr:hover td,
+.dark table tbody tr:nth-child(odd):hover,
+.dark table tbody tr:nth-child(even):hover,
+.dark div[role="row"]:hover {
+  background: color-mix(in srgb, var(--primary) 12%, #18181B) !important;
+  background-color: color-mix(in srgb, var(--primary) 12%, #18181B) !important;
+}
+
+/* Table Row Selected State */
+table tbody tr[class*="selected"],
+table tbody tr[class*="bg-[var(--primary)]"],
+table tbody tr.bg-\[var\(--primary\)\]\/15,
+div[role="row"][class*="selected"] {
+  background: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+  background-color: color-mix(in srgb, var(--primary) 18%, transparent) !important;
+}
+
+/* ── Right Overlay Panel: Crisp Light Shadow ── */
+.fixed.right-0,
+[class*="fixed"][class*="right-0"],
+div[class*="fixed"][class*="right-0"] {
+  border: none !important;
+  background-color: var(--surface-container-low) !important;
+  box-shadow: -2px 0 4px 0 rgba(0, 0, 0, 0.06) !important;
+}
+
+.dark .fixed.right-0,
+.dark [class*="fixed"][class*="right-0"],
+.dark div[class*="fixed"][class*="right-0"] {
+  border: none !important;
+  background-color: var(--surface-container-low) !important;
+  box-shadow: -2px 0 4px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ── Fix Section Behind Notifications (Pristine, Strictly Zero Opaque Backdrop / Zero Strip Band in Light & Dark) ── */
+.fixed.top-\[44px\],
+div[class*="fixed top-[44px]"],
+div[class*="fixed"][class*="z-[9999]"],
+div[class*="z-[9999]"],
+.dark .fixed.top-\[44px\],
+.dark div[class*="fixed top-[44px]"],
+.dark div[class*="fixed"][class*="z-[9999]"],
+.dark div[class*="z-[9999]"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  pointer-events: none !important;
+}
+
+div[class*="fixed top-[44px]"] > div,
+div[class*="z-[9999]"] > div,
+.dark div[class*="fixed top-[44px]"] > div,
+.dark div[class*="z-[9999]"] > div {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+div[class*="z-[9999]"] div[class*="rounded-lg"],
+div[class*="fixed top-[44px]"] div[class*="rounded-lg"],
+div[class*="fixed top-[44px]"] [class*="rounded-lg"] {
+  box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.08) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  pointer-events: auto !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+.dark div[class*="z-[9999]"] div[class*="rounded-lg"],
+.dark div[class*="fixed top-[44px]"] div[class*="rounded-lg"],
+.dark div[class*="fixed top-[44px]"] [class*="rounded-lg"] {
+  background-color: #18191E !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  pointer-events: auto !important;
+}
+
+/* Drawer Backdrop Overlay (Clean Crisp Dimming, No Smudge) */
+div.fixed.inset-0.bg-black\/20,
+div.fixed.inset-0.dark\:bg-black\/50,
+div[class*="fixed inset-0"][class*="bg-black"] {
+  background-color: rgba(0, 0, 0, 0.25) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+/* ── Improved Operations Dashboard Cards ── */
+div[class*="minmax(160px,1fr)"] > div > div[class*="rounded-lg"],
+div[class*="minmax(160px,1fr)"] > div > div[class*="rounded-xl"] {
+  background-color: var(--card) !important;
+  border: none !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+}
+
+.dark div[class*="minmax(160px,1fr)"] > div > div[class*="rounded-lg"],
+.dark div[class*="minmax(160px,1fr)"] > div > div[class*="rounded-xl"] {
+  background-color: var(--surface-container-low) !important;
+  border: none !important;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.35) !important;
+}
+
+/* Metric Row Hierarchy */
+div[class*="minmax(160px,1fr)"] .space-y-1,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 {
+  padding: 4px 0 !important;
+  gap: 4px !important;
+}
+
+div[class*="minmax(160px,1fr)"] .space-y-1 > div,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+  border-radius: 0 !important;
+  padding: 5px 2px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.dark div[class*="minmax(160px,1fr)"] .space-y-1 > div,
+.dark div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div {
+  background-color: transparent !important;
+  border: none !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04) !important;
+}
+
+div[class*="minmax(160px,1fr)"] .space-y-1 > div:last-child,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div:last-child {
+  border-bottom: none !important;
+}
+
+/* Left label: Clean compact typography */
+div[class*="minmax(160px,1fr)"] .space-y-1 > div > span:first-child,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div > span:first-child {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  color: var(--foreground) !important;
+}
+
+/* Right Column: Invert order so Status (e.g. Excellent) is main text and % is small subtext below */
+div[class*="minmax(160px,1fr)"] .space-y-1 > div > div,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div > div {
+  display: flex !important;
+  flex-direction: column-reverse !important;
+  align-items: flex-end !important;
+  gap: 1px !important;
+}
+
+/* Status Label as MAIN TEXT */
+div[class*="minmax(160px,1fr)"] .space-y-1 > div > div > span:last-child,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div > div > span:last-child {
+  font-size: 0.75rem !important;
+  font-weight: 600 !important;
+  width: auto !important;
+  text-align: right !important;
+  line-height: 1.1 !important;
+}
+
+/* Numeric Value as SMALL SUBTEXT BELOW */
+div[class*="minmax(160px,1fr)"] .space-y-1 > div > div > span:first-child,
+div[class*="minmax(160px,1fr)"] .space-y-1\.5 > div > div > span:first-child {
+  font-size: 0.6875rem !important;
+  font-weight: 500 !important;
+  color: var(--muted-foreground) !important;
+  text-align: right !important;
+  line-height: 1.1 !important;
+}
+
+/* ── Strictly Remove Dated UI Artifacts (Left Border Sticks) ── */
+.absolute.left-0.top-1\/2.-translate-y-1\/2.w-1,
+div[class*="rounded-r-full"][class*="absolute"][class*="left-0"],
+div[class*="group-hover:h-full"][class*="absolute"][class*="left-0"],
+div[class*="w-1"][class*="absolute"][class*="left-0"],
+div[class*="rounded-r-full"] {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+}
+
+/* ── Sleek Modern Indicator Accent for Selected Navigation Cards ── */
+.flex.gap-6.mb-8 > button.group > div[class*="-bottom-3"],
+.flex.gap-6.mb-8 > button.group > .absolute.left-1\/2.-translate-x-1\/2.-bottom-3 {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: 3px !important;
+  width: 48px !important;
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 0 6px 0 color-mix(in srgb, var(--primary) 50%, transparent) !important;
+}
+
+div[class*="grid-cols-"] > button.group > div[class*="-bottom-2"],
+div[class*="grid-cols-"] > button.group > .absolute.left-1\/2.-translate-x-1\/2.-bottom-2 {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  height: 2.5px !important;
+  width: 32px !important;
+  background: var(--primary) !important;
+  background-color: var(--primary) !important;
+  border-radius: 9999px !important;
+}

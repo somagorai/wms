@@ -1,0 +1,397 @@
+@custom-variant dark (&:is(.dark *));
+@import './chart-tokens.css';
+
+/* ─────────────────────────────────────────────
+   OPTO BLUE V3 DESIGN SYSTEM
+   Source: Blue-V3.json (Material Theme System)
+   Light Primary: #082C79 | Light On Primary: #E0F2F7
+   Dark Primary:  #85CCE6 | Dark On Primary:  #082C79
+   Secondary: #1A5F95 / #9BCBFF (Ocean Blue)
+   Tertiary: #00677F / #83DCFB (Cyan)
+   Neutrals: Pure Clean Master Blue Neutrals
+   ───────────────────────────────────────────── */
+
+@layer utilities {
+  /* Display */
+  .font-display-large { font-family: 'Nunito Sans', sans-serif; font-size: 3.575rem; font-weight: 700; line-height: 4rem; letter-spacing: -0.025em; }
+  .font-display-medium { font-family: 'Nunito Sans', sans-serif; font-size: 2.8125rem; font-weight: 700; line-height: 3.25rem; letter-spacing: -0.015em; }
+  .font-display-small { font-family: 'Nunito Sans', sans-serif; font-size: 2.25rem; font-weight: 700; line-height: 2.75rem; }
+
+  /* Headline */
+  .font-headline-large { font-family: 'Nunito Sans', sans-serif; font-size: 2rem; font-weight: 700; line-height: 2.5rem; }
+  .font-headline-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1.75rem; font-weight: 700; line-height: 2.25rem; }
+  .font-headline-small { font-family: 'Nunito Sans', sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 2rem; }
+
+  /* Title */
+  .font-title-large { font-family: 'Nunito Sans', sans-serif; font-size: 1.375rem; font-weight: 600; line-height: 1.75rem; }
+  .font-title-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5rem; letter-spacing: 0.015em; }
+  .font-title-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+
+  /* Body */
+  .font-body-large { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.5rem; letter-spacing: 0.025em; }
+  .font-body-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 400; line-height: 1.25rem; letter-spacing: 0.015em; }
+  .font-body-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 400; line-height: 1rem; letter-spacing: 0.02em; }
+
+  /* Label */
+  .font-label-large { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+  .font-label-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 600; line-height: 1rem; letter-spacing: 0.025em; }
+  .font-label-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.6875rem; font-weight: 600; line-height: 1rem; letter-spacing: 0.03em; }
+
+  /* ── Brand accent shortcuts ── */
+  --brand-accent:       #082C79;
+  --brand-accent-dark:  #051C52;
+  --brand-accent-light: #85CCE6;
+
+  /* ── Universal Charts ── */
+  --chart-2: var(--chart-green);
+  --chart-3: var(--chart-orange);
+  --chart-4: var(--chart-purple);
+  --chart-5: var(--chart-yellow);
+}
+
+/* ═══════════════════════════════════════════════
+   BLUE V3 LIGHT MODE
+   ═══════════════════════════════════════════════ */
+:root {
+  --font-family: 'Nunito Sans', sans-serif;
+  --font-size: 16px;
+
+  /* ── Primary Containerized Tokens (Blue V3 Light) ── */
+  --primary:                   #082C79;  /* Blue V3 Light Primary */
+  --surface-tint:              #082C79;
+  --primary-foreground:        #E0F2F7;  /* Blue V3 Light On Primary */
+  --primary-container:         #082C79;
+  --on-primary-container:      #E0F2F7;
+  --inverse-primary:           #85CCE6;  /* Blue V3 Dark Primary */
+
+  /* ── Primary Fixed Tokens ── */
+  --primary-fixed:             #E0F2F7;
+  --on-primary-fixed:          #082C79;
+  --primary-fixed-dim:         #85CCE6;
+  --on-primary-fixed-variant:  #082C79;
+
+  /* ── Secondary Containerized Tokens (Ocean Blue) ── */
+  --secondary:                 #1A5F95;
+  --secondary-foreground:      #FFFFFF;
+  --secondary-container:       #3B78B0;
+  --on-secondary-container:    #FDFCFF;
+
+  /* ── Secondary Fixed Tokens ── */
+  --secondary-fixed:           #D0E4FF;
+  --on-secondary-fixed:        #001D34;
+  --secondary-fixed-dim:       #9BCBFF;
+  --on-secondary-fixed-variant:#004A79;
+
+  /* ── Tertiary Containerized Tokens (Cyan Accent) ── */
+  --tertiary:                  #00677F;
+  --tertiary-foreground:       #FFFFFF;
+  --tertiary-container:        #66C0DE;
+  --on-tertiary-container:     #004D5F;
+  --tertiary-container-text:   #001F28;
+
+  /* ── Tertiary Fixed Tokens ── */
+  --tertiary-fixed:            #B6EBFF;
+  --on-tertiary-fixed:         #001F28;
+  --tertiary-fixed-dim:        #79D2F1;
+  --on-tertiary-fixed-variant: #004E60;
+
+            /* ── 7 Surface Elevation Containers (Light Mode - Ultra Smooth Gradation) ── */
+  --background:                #FCFCFD;  /* Base Canvas (L = 99.2%) */
+  --foreground:                #18191C;  /* Deep neutral text */
+  --on-background:             #18191C;
+  --surface:                   #F8F9FB;  /* Base surface (L = 98.0%) */
+  --on-surface:                #18191C;
+  --surface-dim:               #DDE1E8;  /* Level 0: Dim baseline (L = 89.0%) */
+  --surface-container-lowest:  #FFFFFF;  /* Level 1: Pristine white card (L = 100%) */
+  --surface-container-low:     #F8F9FB;  /* Level 2: Outer section container (L = 98.0%) */
+  --surface-container:         #F2F4F7;  /* Level 3: Subsection container (L = 96.0%) */
+  --surface-container-high:    #EBEEF2;  /* Level 4: Nested card / input (L = 93.8%) */
+  --surface-container-highest: #E4E7ED;  /* Level 5: Highest chip / active badge (L = 91.5%) */
+  --surface-bright:            #FFFFFF;  /* Level 6: Floating popover / bright */
+
+  /* ── Surface Variant Containers ── */
+  --surface-variant:           #EAECEF;
+  --on-surface-variant:        #474B52;
+  --inverse-surface:           #2E3034;
+  --inverse-on-surface:        #F1F3F6;
+
+  /* ── Cards / Popovers ── */
+  --card:                      #FFFFFF;
+  --card-foreground:           #18191C;
+  --popover:                   #FFFFFF;
+  --popover-foreground:        #18191C;
+
+  /* ── Borders & Outlines ── */
+  --border:                    #D0D4DE;
+  --border-light:              rgba(208, 212, 222, 0.45);
+  --outline:                   #717680;
+  --outline-variant:           #D0D4DE;
+  --shadow:                    #000000;
+  --scrim:                     #000000;
+
+  /* ── Destructive / Error ── */
+  --destructive:               #BA1A1A;
+  --destructive-foreground:    #FFFFFF;
+  --error-container:           #FFDAD6;
+  --on-error-container:        #93000A;
+
+  /* ── Controls & State ── */
+  --muted:                     #F5F6F8;
+  --muted-foreground:          #6B7280;
+  --accent:                    #EEF0F3;
+  --accent-foreground:         #18191C;
+  --input:                     #FFFFFF;
+  --input-background:          #FFFFFF;
+  --switch-background:         #D2D6DC;
+  --ring:                      #082C79;
+
+  /* ── Hover / Selected Interaction States ── */
+  --state-hover:               rgba(24, 25, 28, 0.04);
+  --state-primary-hover:       rgba(8, 44, 121, 0.08);
+  --state-selected:            rgba(24, 25, 28, 0.08);
+  --state-primary-selected:    rgba(8, 44, 121, 0.12);
+
+  /* ── Semantic State Tokens ── */
+  --state-error:               #BA1A1A;
+  --state-error-foreground:    #FFFFFF;
+  --state-error-container:     #FFDAD6;
+  --state-on-error-container:  #93000A;
+
+  --state-warning:             #B06000;
+  --state-warning-foreground:  #FFFFFF;
+  --state-warning-container:   #FFDDB4;
+  --state-on-warning-container:#2D1600;
+
+  --state-success:             #2E7D32;
+  --state-success-foreground:  #FFFFFF;
+  --state-success-container:   #C8E6C9;
+  --state-on-success-container:#0F3818;
+
+  --state-info:                #1A5F95;
+  --state-info-foreground:     #FFFFFF;
+  --state-info-container:      #D0E4FF;
+  --state-on-info-container:   #001D34;
+
+  --state-debug:               #5D5D62;
+  --state-debug-foreground:    #FFFFFF;
+  --state-debug-container:     #E2E2E6;
+  --state-on-debug-container:  #1A1A1E;
+
+  --state-disabled-container:  #E0E2E7;
+  --state-disabled-content:    #9EA2AE;
+
+  /* ── Sidebar ── */
+  --sidebar:                   #FFFFFF;
+  --sidebar-foreground:        #18191C;
+  --sidebar-primary:           #082C79;
+  --sidebar-primary-foreground:#E0F2F7;
+  --sidebar-accent:            #F2F4F7;
+  --sidebar-accent-foreground: #18191C;
+  --sidebar-border:            #D0D4DE;
+  --sidebar-ring:              #082C79;
+
+  /* ── Legacy Aliases ── */
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-primary-container:   var(--primary-container);
+  --color-on-primary-container:var(--on-primary-container);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container:var(--on-secondary-container);
+  --color-tertiary:            var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container:  var(--tertiary-container);
+  --color-on-tertiary-container:var(--on-tertiary-container);
+  --color-destructive:         var(--destructive);
+  --color-destructive-foreground:var(--destructive-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low:    var(--surface-container-low);
+  --color-surface-container:        var(--surface-container);
+  --color-surface-container-high:   var(--surface-container-high);
+  --color-surface-container-highest:var(--surface-container-highest);
+  --color-outline:             var(--outline);
+  --color-outline-variant:     var(--outline-variant);
+  --color-brand-accent:        var(--brand-accent);
+  --color-brand-accent-dark:   var(--brand-accent-dark);
+  --color-brand-accent-light:  var(--brand-accent-light);
+  --color-state-fatal:         var(--state-fatal);
+  --color-state-fatal-foreground: var(--state-fatal-foreground);
+  --color-state-fatal-container: var(--state-fatal-container);
+  --color-state-on-fatal-container: var(--state-on-fatal-container);
+  --color-state-error:         var(--state-error);
+  --color-state-error-foreground: var(--state-error-foreground);
+  --color-state-error-container: var(--state-error-container);
+  --color-state-on-error-container: var(--state-on-error-container);
+  --color-state-warning:       var(--state-warning);
+  --color-state-warning-foreground: var(--state-warning-foreground);
+  --color-state-warning-container: var(--state-warning-container);
+  --color-state-on-warning-container: var(--state-on-warning-container);
+  --color-state-info:          var(--state-info);
+  --color-state-info-foreground: var(--state-info-foreground);
+  --color-state-info-container: var(--state-info-container);
+  --color-state-on-info-container: var(--state-on-info-container);
+  --color-state-success:       var(--state-success);
+  --color-state-success-foreground: var(--state-success-foreground);
+  --color-state-success-container: var(--state-success-container);
+  --color-state-on-success-container: var(--state-on-success-container);
+  --color-state-debug:         var(--state-debug);
+  --color-state-debug-foreground: var(--state-debug-foreground);
+  --color-state-debug-container: var(--state-debug-container);
+  --color-state-on-debug-container: var(--state-on-debug-container);
+  --color-state-disabled-container: var(--state-disabled-container);
+  --color-state-disabled-content: var(--state-disabled-content);
+}
+
+/* ═══════════════════════════════════════════════
+   BLUE V3 DARK MODE
+   ═══════════════════════════════════════════════ */
+.dark {
+  /* ── Primary Containerized Tokens (Blue V3 Dark) ── */
+  --primary:                   #85CCE6;  /* Blue V3 Dark Primary */
+  --surface-tint:              #85CCE6;
+  --primary-foreground:        #082C79;  /* Blue V3 Dark On Primary */
+  --primary-container:         #082C79;
+  --on-primary-container:      #E0F2F7;
+  --inverse-primary:           #082C79;  /* Blue V3 Light Primary */
+
+  /* ── Primary Fixed Tokens ── */
+  --primary-fixed:             #E0F2F7;
+  --on-primary-fixed:          #082C79;
+  --primary-fixed-dim:         #85CCE6;
+  --on-primary-fixed-variant:  #082C79;
+
+  /* ── Secondary Containerized Tokens (Ocean Blue) ── */
+  --secondary:                 #9BCBFF;
+  --secondary-foreground:      #003356;
+  --secondary-container:       #5A95CE;
+  --on-secondary-container:    #001528;
+
+  /* ── Secondary Fixed Tokens ── */
+  --secondary-fixed:           #D0E4FF;
+  --on-secondary-fixed:        #001D34;
+  --secondary-fixed-dim:       #9BCBFF;
+  --on-secondary-fixed-variant:#004A79;
+
+  /* ── Tertiary Containerized Tokens (Cyan Accent) ── */
+  --tertiary:                  #83DCFB;
+  --tertiary-foreground:       #003543;
+  --tertiary-container:        #66C0DE;
+  --on-tertiary-container:     #004D5F;
+  --tertiary-container-text:   #B6EBFF;
+
+  /* ── Tertiary Fixed Tokens ── */
+  --tertiary-fixed:            #B6EBFF;
+  --on-tertiary-fixed:         #001F28;
+  --tertiary-fixed-dim:        #79D2F1;
+  --on-tertiary-fixed-variant: #004E60;
+
+            /* ── 7 Surface Elevation Containers (Dark Mode Exact Inverse) ── */
+  --background:                #0E1013;  /* Base Canvas (L = 6.5%) */
+  --foreground:                #EDEDEF;  /* High legibility neutral text */
+  --on-background:             #EDEDEF;
+  --surface:                   #13151A;  /* Base surface (L = 9.0%) */
+  --on-surface:                #EDEDEF;
+  --surface-dim:               #090A0C;  /* Level 0: Deepest dim baseline */
+  --surface-container-lowest:  #0E1013;  /* Level 1: Canvas ground */
+  --surface-container-low:     #13151A;  /* Level 2: Outer section container (L = 9.0%) */
+  --surface-container:         #191C22;  /* Level 3: Subsection container (L = 11.8%) */
+  --surface-container-high:    #20242D;  /* Level 4: Nested card / tile (L = 15.0%) */
+  --surface-container-highest: #282D38;  /* Level 5: Highest chip / active badge (L = 19.0%) */
+  --surface-bright:            #333946;  /* Level 6: Floating popover / bright */
+
+  /* ── Surface Variant Containers ── */
+  --surface-variant:           #20242D;
+  --on-surface-variant:        #9EA2AE;
+  --inverse-surface:           #EDEDEF;
+  --inverse-on-surface:        #16171A;
+
+  /* ── Cards / Popovers ── */
+  --card:                      #20242D;
+  --card-foreground:           #EDEDEF;
+  --popover:                   #20242D;
+  --popover-foreground:        #EDEDEF;
+
+  /* ── Borders & Outlines ── */
+  --border:                    #282C36;
+  --border-light:              rgba(255, 255, 255, 0.08);
+  --outline:                   #6E7380;
+  --outline-variant:           #282C36;
+  --shadow:                    #000000;
+  --scrim:                     #000000;
+
+  /* ── Destructive / Error ── */
+  --destructive:               #FFB4AB;
+  --destructive-foreground:    #690005;
+  --error-container:           #93000A;
+  --on-error-container:        #FFDAD6;
+
+  /* ── Controls & State ── */
+  --muted:                     #1B1D22;
+  --muted-foreground:          #9EA2AE;
+  --accent:                    #282C34;
+  --accent-foreground:         #EDEDEF;
+  --input:                     #1B1D22;
+  --input-background:          #1B1D22;
+  --switch-background:         #282C36;
+  --ring:                      #85CCE6;
+  --brand-accent:              #85CCE6;
+  --brand-accent-dark:         #082C79;
+  --brand-accent-light:        #85CCE6;
+  --sidebar:                   #15171B;
+  --sidebar-foreground:        #EDEDEF;
+  --sidebar-primary:           #85CCE6;
+  --sidebar-primary-foreground:#082C79;
+  --sidebar-accent:            #21242B;
+  --sidebar-accent-foreground: #EDEDEF;
+  --sidebar-border:            #282C36;
+  --sidebar-ring:              #85CCE6;
+
+  /* ── Hover / Selected Interaction States ── */
+  --state-hover:               rgba(255, 255, 255, 0.04);
+  --state-primary-hover:       rgba(133, 204, 230, 0.16);
+  --state-selected:            rgba(255, 255, 255, 0.08);
+  --state-primary-selected:    rgba(133, 204, 230, 0.24);
+
+  /* ── Semantic State Tokens ── */
+  --state-error:               #FFB4AB;
+  --state-error-foreground:    #690005;
+  --state-error-container:     #93000A;
+  --state-on-error-container:  #FFDAD6;
+
+  --state-warning:             #FFD39B;
+  --state-warning-foreground:  #452B00;
+  --state-warning-container:   #633F00;
+  --state-on-warning-container:#FFDDB4;
+
+  --state-success:             #81C784;
+  --state-success-foreground:  #003314;
+  --state-success-container:   #1B5E20;
+  --state-on-success-container:#C8E6C9;
+
+  --state-info:                #83DCFB;
+  --state-info-foreground:     #003543;
+  --state-info-container:      #004D5F;
+  --state-on-info-container:   #B6EBFF;
+
+  --state-debug:               #9E9EA4;
+  --state-debug-foreground:    #1A1A1E;
+  --state-debug-container:     #323236;
+  --state-on-debug-container:  #E2E2E6;
+
+  --state-disabled-container:  #282A30;
+  --state-disabled-content:    #6E7380;
+}

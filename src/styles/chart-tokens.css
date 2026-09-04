@@ -1,0 +1,95 @@
+/* ─────────────────────────────────────────────
+   OPTO UNIVERSAL CHART COLOR TOKENS
+   Standardized chart palette across ALL versions & themes
+   Dual-Mode: High-Contrast 800 Shades (Light) vs Luminous 300 Glow (Dark)
+   ───────────────────────────────────────────── */
+
+/* ── Light Mode Universal Chart Palette (Deep 800 shades for solid contrast on light bg) ── */
+:root {
+  --chart-blue:          #1E40AF; /* Deep Royal Blue (800) */
+  --chart-green:         #166534; /* Deep Forest Emerald (800) */
+  --chart-orange:        #9A3412; /* Deep Russet Terracotta (800) */
+  --chart-yellow:        #854D0E; /* Deep Ochre Amber (800) */
+  --chart-red:           #991B1B; /* Deep Crimson Burgundy (800) */
+  --chart-purple:        #6B21A8; /* Deep Regal Violet (800) */
+  --chart-brown:         #573010; /* Deep Espresso Brown (900) */
+  --chart-teal:          #115E59; /* Deep Ocean Teal (800) */
+  --chart-pink:          #9D174D; /* Deep Berry Magenta (800) */
+  --chart-indigo:        #3730A3; /* Deep Midnight Indigo (800) */
+
+  /* ── Sequential Indices ── */
+  --chart-1:             var(--chart-blue);
+  --chart-2:             var(--chart-green);
+  --chart-3:             var(--chart-orange);
+  --chart-4:             var(--chart-purple);
+  --chart-5:             var(--chart-yellow);
+  --chart-6:             var(--chart-teal);
+  --chart-7:             var(--chart-red);
+  --chart-8:             var(--chart-brown);
+  --chart-9:             var(--chart-pink);
+  --chart-10:            var(--chart-indigo);
+
+  /* ── Work Type Mappings ── */
+  --chart-pick:          var(--chart-blue);
+  --chart-replenishment: var(--chart-orange);
+  --chart-cycle-count:   var(--chart-purple);
+  --chart-inspection:    var(--chart-green);
+  --chart-putaway:       var(--chart-teal);
+  --chart-move:          var(--chart-brown);
+  --chart-transfer:      var(--chart-indigo);
+
+  /* ── Chart Cursor & Hover (20% transparent primary color) ── */
+  --chart-cursor-hover:  color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* ── Dark Mode Universal Chart Palette (Luminous, radiant 300 glow on dark bg) ── */
+.dark {
+  --chart-blue:          #93C5FD; /* Luminous Sky Ice Blue (300) */
+  --chart-green:         #86EFAC; /* Luminous Mint Emerald (300) */
+  --chart-orange:        #FDBA74; /* Luminous Coral Tangerine (300) */
+  --chart-yellow:        #FDE047; /* Radiant Sun Yellow (300) */
+  --chart-red:           #FCA5A5; /* Luminous Coral Rose (300) */
+  --chart-purple:        #D8B4FE; /* Luminous Lavender Violet (300) */
+  --chart-brown:         #FCD34D; /* Warm Golden Honey (300) */
+  --chart-teal:          #5EEAD4; /* Radiant Aqua Turquoise (300) */
+  --chart-pink:          #F9A8D4; /* Luminous Orchid Rose (300) */
+  --chart-indigo:        #A5B4FC; /* Luminous Periwinkle Iris (300) */
+
+  /* ── Sequential Indices ── */
+  --chart-1:             var(--chart-blue);
+  --chart-2:             var(--chart-green);
+  --chart-3:             var(--chart-orange);
+  --chart-4:             var(--chart-purple);
+  --chart-5:             var(--chart-yellow);
+  --chart-6:             var(--chart-teal);
+  --chart-7:             var(--chart-red);
+  --chart-8:             var(--chart-brown);
+  --chart-9:             var(--chart-pink);
+  --chart-10:            var(--chart-indigo);
+
+  /* ── Work Type Mappings ── */
+  --chart-pick:          var(--chart-blue);
+  --chart-replenishment: var(--chart-orange);
+  --chart-cycle-count:   var(--chart-purple);
+  --chart-inspection:    var(--chart-green);
+  --chart-putaway:       var(--chart-teal);
+  --chart-move:          var(--chart-brown);
+  --chart-transfer:      var(--chart-indigo);
+
+  /* ── Chart Cursor & Hover (20% transparent primary color) ── */
+  --chart-cursor-hover:  color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+/* ── Global Recharts Tooltip Cursor & Hover Styles ── */
+.recharts-rectangle.recharts-tooltip-cursor,
+.recharts-bar-rectangle.recharts-tooltip-cursor,
+rect.recharts-tooltip-cursor {
+  fill: var(--chart-cursor-hover, color-mix(in srgb, var(--primary) 20%, transparent)) !important;
+  opacity: 1 !important;
+}
+
+.recharts-crosshair-cursor,
+line.recharts-tooltip-cursor {
+  stroke: var(--chart-cursor-hover, color-mix(in srgb, var(--primary) 20%, transparent)) !important;
+  stroke-dasharray: 4 4;
+}

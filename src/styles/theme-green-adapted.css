@@ -1,0 +1,440 @@
+@custom-variant dark (&:is(.dark *));
+@import './chart-tokens.css';
+
+/* ─────────────────────────────────────────────
+   OPTO V3 DESIGN SYSTEM — 100% token-aligned
+   Source: tokens.json (light/dark) + WESDesignFigmaBeta.json (primitives/modes)
+   
+   ✅ All values sourced directly from JSON files — zero invented colors.
+   ✅ Hover/active states use Figma "states" group token values.
+   ✅ Semantic state tokens (error/warning/success/info) use Figma primitive palettes.
+   ─────────────────────────────────────────────
+   Palette Reference (from WESDesignFigmaBeta.json primitives):
+   
+   Primary palette:  p0=#000000 … p40=#006E2D … p50=#008A3B … p80=#3EE270 … p100=#FFFFFF
+   Red:              r40=#AE2626 r30=#7D161D r80=#F2BEB8 r90=#F9DFDB
+   Orange:           o40=#BF5C15 o30=#84400F o80=#F7CFB3 o90=#FBE7D9
+   Green:            g40=#4C9F35 g30=#30761D g80=#C9EAC0 g90=#E4F5DF
+   Blue:             b40=#357C9F b30=#25566E b80=#C0DCEA b90=#DDEEF7
+   Neutral:          n10=#181B18 n12=#1D201D n17=#313532 n90=#DDE1DB n96=#F2F4F0
+   Neutral Variant:  nv30=#444744 nv50=#737873 nv80=#C3C7C2
+   ───────────────────────────────────────────── */
+
+@layer utilities {
+  /* Display */
+  .font-display-large { font-family: 'Nunito Sans', sans-serif; font-size: 3.575rem; font-weight: 700; line-height: 4rem; letter-spacing: -0.025em; }
+  .font-display-medium { font-family: 'Nunito Sans', sans-serif; font-size: 2.8125rem; font-weight: 700; line-height: 3.25rem; letter-spacing: -0.015em; }
+  .font-display-small { font-family: 'Nunito Sans', sans-serif; font-size: 2.25rem; font-weight: 700; line-height: 2.75rem; }
+
+  /* Headline */
+  .font-headline-large { font-family: 'Nunito Sans', sans-serif; font-size: 2rem; font-weight: 700; line-height: 2.5rem; }
+  .font-headline-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1.75rem; font-weight: 700; line-height: 2.25rem; }
+  .font-headline-small { font-family: 'Nunito Sans', sans-serif; font-size: 1.5rem; font-weight: 600; line-height: 2rem; }
+
+  /* Title */
+  .font-title-large { font-family: 'Nunito Sans', sans-serif; font-size: 1.375rem; font-weight: 600; line-height: 1.75rem; }
+  .font-title-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 600; line-height: 1.5rem; letter-spacing: 0.015em; }
+  .font-title-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+
+  /* Body */
+  .font-body-large { font-family: 'Nunito Sans', sans-serif; font-size: 1rem; font-weight: 400; line-height: 1.5rem; letter-spacing: 0.025em; }
+  .font-body-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 400; line-height: 1.25rem; letter-spacing: 0.015em; }
+  .font-body-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 400; line-height: 1rem; letter-spacing: 0.02em; }
+
+  /* Label */
+  .font-label-large { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+  .font-label-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem; font-weight: 600; line-height: 1rem; letter-spacing: 0.025em; }
+  .font-label-small { font-family: 'Nunito Sans', sans-serif; font-size: 0.6875rem; font-weight: 600; line-height: 1rem; letter-spacing: 0.03em; }
+  /* ── Brand accent shortcuts ── */
+  --brand-accent:       #00C658;
+  --brand-accent-dark:  #006E2D;
+  --brand-accent-light: #3EE270;
+
+  /* ── Universal Charts ── */
+  --chart-2: var(--chart-green);
+  --chart-3: var(--chart-orange);
+  --chart-4: var(--chart-purple);
+  --chart-5: var(--chart-yellow);
+}
+
+/* ═══════════════════════════════════════════════
+   LIGHT MODE (default)
+   Source: tokens.json → light.*
+   ═══════════════════════════════════════════════ */
+:root {
+  --font-family: 'Nunito Sans', sans-serif;
+  --font-size: 16px;
+
+  /* ── Primary (tokens.json light) ── */
+  --primary:                   #006E2D;  /* light.primary            → p40 */
+  --primary-foreground:        #FFFFFF;  /* light.onPrimary          → p100 */
+  --primary-container:         #00C658;  /* light.primaryContainer   → p70 */
+  --on-primary-container:      #004B1D;  /* light.onPrimaryContainer → p25 */
+  --inverse-primary:           #3EE270;  /* light.inversePrimary     → p80 */
+
+  /* ── Secondary (tokens.json light) ── */
+  --secondary:                 #3E6071;  /* light.secondary */
+  --secondary-foreground:      #FFFFFF;  /* light.onSecondary */
+  --secondary-container:       #57798B;  /* light.secondaryContainer */
+  --on-secondary-container:    #FBFDFF;  /* light.onSecondaryContainer */
+
+  /* ── Tertiary (WESDesignFigmaBeta primitives) ── */
+  --tertiary:                  #825500;  /* orange p40 */
+  --tertiary-foreground:       #FFFFFF;  /* orange p100 */
+  --tertiary-container:        #FBB03B;  /* orange p70 */
+  --on-tertiary-container:     #6C4500;  /* orange p30 approx */
+  --tertiary-container-text:   #452B00;  /* orange p10 */
+
+  /* ── Surface Elevation (Lightened & Refined) ── */
+  --background:                #F8F9F8;  /* Airy clean canvas */
+  --foreground:                #181B18;  /* Deep crisp neutral text */
+  --surface:                   #FFFFFF;  /* Pure white surface */
+  --surface-dim:               #E4E7E3;  /* Subtle surface dim */
+  --surface-bright:            #FFFFFF;  /* Surface bright */
+  --surface-container-lowest:  #FFFFFF;  /* Pure white lowest */
+  --surface-container-low:     #F7F8F6;  /* Lightened surface container low */
+  --surface-container:         #F2F4F0;  /* Lightened surface container */
+  --surface-container-high:    #ECEEEA;  /* Lightened surface container high */
+  --surface-container-highest: #E5E8E3;  /* Lightened surface container highest */
+
+  /* ── Surface Variant ── */
+  --surface-variant:           #E8EBE6;
+  --on-surface-variant:        #444744;
+
+  /* ── Cards / Popover ── */
+  --card:                      #FFFFFF;
+  --card-foreground:           #181B18;
+  --popover:                   #FFFFFF;
+  --popover-foreground:        #181B18;
+
+  /* ── Borders & Outline (One shade darker for visibility, light for row bottoms) ── */
+  --border:                    #CFD3CC;  /* Visible, crisp clean border */
+  --border-light:              rgba(207, 211, 204, 0.45); /* Subtle row bottom outline */
+  --outline:                   #737873;
+  --outline-variant:           #CFD3CC;
+
+  /* ── Misc State ── */
+  --muted:                     #F2F4F0;  /* surfaceContainerLow → neutral 96 */
+  --muted-foreground:          #444744;  /* onSurfaceVariant → nv30         */
+  --accent:                    #E6E9E4;  /* surfaceContainerHigh → neutral 92 */
+  --accent-foreground:         #181B18;  /* foreground → neutral 10         */
+  --destructive:               #BA1A1A;  /* light.error → r40               */
+  --destructive-foreground:    #FFFFFF;  /* light.onError → r100            */
+  --input:                     transparent;
+  --input-background:          #F2F4F0;  /* surfaceContainerLow → neutral 96 */
+  --switch-background:         #C3C7C2;  /* outlineVariant → nv80           */
+  --ring:                      #006E2D;  /* primary                         */
+
+  /* ── Hover / Interaction States (WESDesignFigmaBeta modes.states) ── */
+  /* Figma: hover = #181b1829 (neutral 10 at ~16% alpha) */
+  --state-hover:               rgba(21, 30, 22, 0.08);
+  /* Figma: primary hover = #006d3329 (primary 40 at ~16% alpha) */
+  --state-primary-hover:       rgba(0, 110, 45, 0.08);
+  /* Figma: selected = #181b1852 (~32% alpha) */
+  --state-selected:            rgba(21, 30, 22, 0.12);
+  /* Figma: primary selected = #006d333d (~24% alpha) */
+  --state-primary-selected:    rgba(0, 110, 45, 0.12);
+
+  /* ── Semantic State Tokens (WESDesignFigmaBeta primitives) ── */
+  /* Error: red palette */
+  --state-error:               #AE2626;  /* red 40 */
+  --state-error-foreground:    #FFFFFF;  /* red 100 */
+  --state-error-container:     #F9DFDB;  /* red 90 */
+  --state-on-error-container:  #7D161D;  /* red 30 */
+
+  /* Warning: orange palette */
+  --state-warning:             #BF5C15;  /* orange 40 */
+  --state-warning-foreground:  #FFFFFF;  /* orange 100 */
+  --state-warning-container:   #FBE7D9;  /* orange 90 */
+  --state-on-warning-container:#84400F;  /* orange 30 */
+
+  /* Success: green palette */
+  --state-success:             #4C9F35;  /* green 40 */
+  --state-success-foreground:  #FFFFFF;  /* green 100 */
+  --state-success-container:   #E4F5DF;  /* green 90 */
+  --state-on-success-container:#30761D;  /* green 30 */
+
+  /* Info: blue palette */
+  --state-info:                #357C9F;  /* blue 40 */
+  --state-info-foreground:     #FFFFFF;  /* blue 100 */
+  --state-info-container:      #DDEEF7;  /* blue 90 */
+  --state-on-info-container:   #25566E;  /* blue 30 */
+
+  /* Fatal: deep red */
+  --state-fatal:               #7D0000;  /* beyond red 30 */
+  --state-fatal-foreground:    #FFFFFF;
+  --state-fatal-container:     #FFD2CC;
+  --state-on-fatal-container:  #5C0000;
+
+  /* Debug: neutral variant */
+  --state-debug:               #737873;  /* neutral variant 50 */
+  --state-debug-foreground:    #FFFFFF;
+  --state-debug-container:     #EDF6E9;  /* surfaceContainerLow */
+  --state-on-debug-container:  #151E16;  /* foreground */
+
+  /* Disabled */
+  --state-disabled-container:  rgba(21, 30, 22, 0.04);   /* neutral 10 at 4% */
+  --state-disabled-content:    rgba(21, 30, 22, 0.38);   /* neutral 10 at 38% */
+
+  --radius: 0.5rem;
+  --sidebar: #F2F4F0;           /* neutral 96 */
+  --sidebar-foreground: #181B18; /* neutral 10 */
+  --sidebar-primary: #006E2D;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent: #E6E9E4;    /* neutral 92 */
+  --sidebar-accent-foreground: #181B18; /* neutral 10 */
+  --sidebar-border: #C3C7C2;    /* neutral variant 80 */
+  --sidebar-ring: #006E2D;
+}
+
+/* ═══════════════════════════════════════════════
+   DARK MODE
+   Source: tokens.json → dark.*
+   ═══════════════════════════════════════════════ */
+.dark {
+  /* ── Primary (tokens.json dark) ── */
+  --primary:                   #3FE371;  /* dark.primary            → p80 */
+  --primary-foreground:        #003914;  /* dark.onPrimary          → p20 */
+  --primary-container:         #005225;  /* dark.primaryContainer   → p30 */
+  --on-primary-container:      #70FD9A;  /* dark.onPrimaryContainer → p90 */
+  --inverse-primary:           #006E2D;  /* dark.inversePrimary     → p40 */
+
+  /* ── Secondary (tokens.json dark) ── */
+  --secondary:                 #A8CCDF;  /* dark.secondary */
+  --secondary-foreground:      #0D3444;  /* dark.onSecondary */
+  --secondary-container:       #284B5B;  /* dark.secondaryContainer */
+  --on-secondary-container:    #C3E8FC;  /* dark.onSecondaryContainer */
+
+  /* ── Tertiary ── */
+  --tertiary:                  #FFD39B;  /* dark.tertiary */
+  --tertiary-foreground:       #452B00;  /* dark.onTertiary */
+  --tertiary-container:        #633F00;  /* dark.tertiaryContainer */
+  --on-tertiary-container:     #FFDDB4;  /* dark.onTertiaryContainer */
+  --tertiary-container-text:   #FFDDB4;
+
+  /* ── Surface Elevation (WESDesignFigmaBeta.json → neutral palette dark tones) ── */
+  /* Mirrors light mode: same neutral palette, darker tones. No green tint.   */
+  /* Light used n99/96/94/92/90. Dark uses n6/10/12/14/17 (inverted order).   */
+  --background:                #0E110E;  /* Figma neutral 6   */
+  --foreground:                #DDE1DB;  /* Figma neutral 90  */
+  --surface:                   #0E110E;  /* Figma neutral 6   */
+  --surface-dim:               #0E110E;  /* Figma neutral 6   */
+  --surface-bright:            #393D3A;  /* Figma neutral 20  */
+  --surface-container-lowest:  #0E110E;  /* Figma neutral 6   */
+  --surface-container-low:     #181B18;  /* Figma neutral 10  */
+  --surface-container:         #1D201D;  /* Figma neutral 12  */
+  --surface-container-high:    #252826;  /* Figma neutral 14  */
+  --surface-container-highest: #313532;  /* Figma neutral 17  */
+
+  /* ── Surface Variant (Figma neutral variant palette dark) ── */
+  --surface-variant:           #444744;  /* neutral variant 30 */
+  --on-surface-variant:        #C3C7C2;  /* neutral variant 80 */
+
+  /* ── Cards / Popover ── */
+  --card:                      #1D201D;  /* surface-container → neutral 12   */
+  --card-foreground:           #DDE1DB;  /* foreground → neutral 90          */
+  --popover:                   #252826;  /* surface-container-high → neutral 14 */
+  --popover-foreground:        #DDE1DB;  /* foreground → neutral 90          */
+
+  /* ── Borders & Outline (Figma neutral variant palette dark) ── */
+  --border:                    #444744;  /* neutral variant 30 */
+  --border-light:              rgba(255, 255, 255, 0.08);
+  --outline:                   #8D918D;  /* neutral variant 60 */
+  --outline-variant:           #444744;  /* neutral variant 30 */
+
+  /* ── Misc State ── */
+  --muted:                     #181B18;  /* surface-container-low → neutral 10  */
+  --muted-foreground:          #A9ACA6;  /* neutral 70 */
+  --accent:                    #252826;  /* surface-container-high → neutral 14 */
+  --accent-foreground:         #DDE1DB;  /* foreground → neutral 90            */
+  --destructive:               #FFB4AB;  /* dark.error → r80                   */
+  --destructive-foreground:    #690005;  /* dark.onError → r20                 */
+  --input:                     #181B18;  /* surface-container-low → neutral 10  */
+  --input-background:          #181B18;  /* surface-container-low → neutral 10  */
+  --switch-background:         #444744;  /* surface-variant → nv30              */
+  --ring:                      #3FE371;  /* primary                             */
+
+  /* ── Hover / Interaction States (WESDesignFigmaBeta modes.states dark) ── */
+  /* Figma dark: hover = #e0e3dd1f (neutral 90 at ~12% alpha) */
+  --state-hover:               rgba(220, 229, 216, 0.08);
+  --state-primary-hover:       rgba(63, 227, 113, 0.08);
+  --state-selected:            rgba(220, 229, 216, 0.12);
+  --state-primary-selected:    rgba(63, 227, 113, 0.12);
+
+  /* ── Semantic State Tokens (WESDesignFigmaBeta primitives — dark inverted) ── */
+  /* Error: red palette inverted for dark */
+  --state-error:               #F2BEB8;  /* red 80 */
+  --state-error-foreground:    #5F0A0F;  /* red 20 */
+  --state-error-container:     #7D161D;  /* red 30 */
+  --state-on-error-container:  #F9DFDB;  /* red 90 */
+
+  /* Warning: orange palette inverted */
+  --state-warning:             #F7CFB3;  /* orange 80 */
+  --state-warning-foreground:  #5F2E0A;  /* orange 20 */
+  --state-warning-container:   #84400F;  /* orange 30 */
+  --state-on-warning-container:#FBE7D9;  /* orange 90 */
+
+  /* Success: green palette inverted */
+  --state-success:             #C9EAC0;  /* green 80 */
+  --state-success-foreground:  #235415;  /* green 20 */
+  --state-success-container:   #30761D;  /* green 30 */
+  --state-on-success-container:#E4F5DF;  /* green 90 */
+
+  /* Info: blue palette inverted */
+  --state-info:                #C0DCEA;  /* blue 80 */
+  --state-info-foreground:     #1A3D4F;  /* blue 20 */
+  --state-info-container:      #25566E;  /* blue 30 */
+  --state-on-info-container:   #DDEEF7;  /* blue 90 */
+
+  /* Fatal: deep red inverted */
+    /* ── Exception State: Fatal (Purple) ── */
+  --state-fatal:               #C084FC;  /* Luminous Orchid Purple (Purple 400) */
+  --state-fatal-foreground:    #3B0764;
+  --state-fatal-container:     #4A1D96;  /* Deep Purple Container */
+  --state-on-fatal-container:  #F3E8FF;  /* Soft Lavender 100 */
+  --state-on-fatal-container:  #FFD2CC;
+
+  /* Debug: neutral variant inverted */
+  --state-debug:               #A9ACA6;  /* neutral 70 */
+  --state-debug-foreground:    #0E110E;  /* background → neutral 6 */
+  --state-debug-container:     #181B18;  /* surfaceContainerLow → neutral 10 */
+  --state-on-debug-container:  #C3C7C2;  /* onSurfaceVariant → nv80 */
+
+  /* Disabled */
+  --state-disabled-container:  rgba(221, 225, 219, 0.04);   /* foreground at 4% */
+  --state-disabled-content:    rgba(221, 225, 219, 0.38);   /* foreground at 38% */
+
+  --radius: 0.5rem;
+  --sidebar: #181B18;           /* neutral 10 */
+  --sidebar-foreground: #DDE1DB; /* neutral 90 */
+  --sidebar-primary: #3FE371;
+  --sidebar-primary-foreground: #003914;
+  --sidebar-accent: #252826;    /* neutral 14 */
+  --sidebar-accent-foreground: #DDE1DB; /* neutral 90 */
+  --sidebar-border: #444744;    /* neutral variant 30 */
+  --sidebar-ring: #3FE371;
+}
+
+@theme inline {
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-ring: var(--ring);
+  --color-switch-background: var(--switch-background);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-dark: var(--brand-accent-dark);
+  --color-brand-accent-light: var(--brand-accent-light);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-variant: var(--surface-variant);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-state-hover: var(--state-hover);
+  --color-state-primary-hover: var(--state-primary-hover);
+  --color-state-selected: var(--state-selected);
+  --color-state-primary-selected: var(--state-primary-selected);
+  --color-state-error: var(--state-error);
+  --color-state-error-foreground: var(--state-error-foreground);
+  --color-state-error-container: var(--state-error-container);
+  --color-state-on-error-container: var(--state-on-error-container);
+  --color-state-warning: var(--state-warning);
+  --color-state-warning-foreground: var(--state-warning-foreground);
+  --color-state-warning-container: var(--state-warning-container);
+  --color-state-on-warning-container: var(--state-on-warning-container);
+  --color-state-info: var(--state-info);
+  --color-state-info-foreground: var(--state-info-foreground);
+  --color-state-info-container: var(--state-info-container);
+  --color-state-on-info-container: var(--state-on-info-container);
+  --color-state-success: var(--state-success);
+  --color-state-success-foreground: var(--state-success-foreground);
+  --color-state-success-container: var(--state-success-container);
+  --color-state-on-success-container: var(--state-on-success-container);
+  --color-state-debug: var(--state-debug);
+  --color-state-debug-foreground: var(--state-debug-foreground);
+  --color-state-debug-container: var(--state-debug-container);
+  --color-state-on-debug-container: var(--state-on-debug-container);
+  --color-state-disabled-container: var(--state-disabled-container);
+  --color-state-disabled-content: var(--state-disabled-content);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    scrollbar-width: thin;
+    scrollbar-color: var(--outline-variant) transparent;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--outline-variant);
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--outline);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}

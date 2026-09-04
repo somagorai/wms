@@ -1,0 +1,521 @@
+@custom-variant dark (&:is(.dark *));
+@import './chart-tokens.css';
+
+/* ─────────────────────────────────────────────
+   OPTO BLUE V5 — Enterprise Design System
+   Visual Language: v0 by Vercel / Clean Enterprise
+   ─────────────────────────────────────────────
+   BRAND IDENTITY (immutable)
+   Light → brand-primary: #2B5DCA | on: #E9F0FF | usePrimary: #2B5DCA
+   Dark  → brand-primary: #2B5DCA | on: #E9F0FF | usePrimary: #6997FB
+   Font: Nunito Sans (unchanged)
+   ─────────────────────────────────────────────
+   VISUAL LANGUAGE (v0-style)
+   • Zinc-based neutral palette — near-black dark, pure-white light
+   • Depth through hairline borders, not shadows or color elevation
+   • Border: rgba alpha channels — ultra-subtle
+   • Radius: 6px default, 8px cards, 4px inputs/tags
+   • Buttons: crisp, compact, border-defined
+   • Sidebar: flush, minimal, borderline only
+   ───────────────────────────────────────────── */
+
+/* ─────────────────────────────────────────────
+   TYPOGRAPHY (Nunito Sans — brand identity, unchanged)
+   ───────────────────────────────────────────── */
+@layer utilities {
+  .font-display-large  { font-family: 'Nunito Sans', sans-serif; font-size: 3.575rem; font-weight: 700; line-height: 4rem;    letter-spacing: -0.025em; }
+  .font-display-medium { font-family: 'Nunito Sans', sans-serif; font-size: 2.8125rem; font-weight: 700; line-height: 3.25rem; letter-spacing: -0.015em; }
+  .font-display-small  { font-family: 'Nunito Sans', sans-serif; font-size: 2.25rem;  font-weight: 700; line-height: 2.75rem; }
+
+  .font-headline-large  { font-family: 'Nunito Sans', sans-serif; font-size: 2rem;    font-weight: 700; line-height: 2.5rem; }
+  .font-headline-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1.75rem; font-weight: 700; line-height: 2.25rem; }
+  .font-headline-small  { font-family: 'Nunito Sans', sans-serif; font-size: 1.5rem;  font-weight: 600; line-height: 2rem; }
+
+  .font-title-large  { font-family: 'Nunito Sans', sans-serif; font-size: 1.375rem; font-weight: 600; line-height: 1.75rem; }
+  .font-title-medium { font-family: 'Nunito Sans', sans-serif; font-size: 1rem;     font-weight: 600; line-height: 1.5rem;  letter-spacing: 0.015em; }
+  .font-title-small  { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+
+  .font-body-large  { font-family: 'Nunito Sans', sans-serif; font-size: 1rem;     font-weight: 400; line-height: 1.5rem;  letter-spacing: 0.025em; }
+  .font-body-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem; font-weight: 400; line-height: 1.25rem; letter-spacing: 0.015em; }
+  .font-body-small  { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem;  font-weight: 400; line-height: 1rem;    letter-spacing: 0.02em; }
+
+  .font-label-large  { font-family: 'Nunito Sans', sans-serif; font-size: 0.875rem;  font-weight: 600; line-height: 1.25rem; letter-spacing: 0.01em; }
+  .font-label-medium { font-family: 'Nunito Sans', sans-serif; font-size: 0.75rem;   font-weight: 600; line-height: 1rem;    letter-spacing: 0.025em; }
+  .font-label-small  { font-family: 'Nunito Sans', sans-serif; font-size: 0.6875rem; font-weight: 600; line-height: 1rem;    letter-spacing: 0.03em; }
+
+  /* Brand utilities */
+  .bg-brand-primary    { background-color: var(--brand-primary); }
+  .text-brand-on-primary { color: var(--brand-on-primary); }
+  .text-use-primary    { color: var(--use-primary); }
+  .border-use-primary  { border-color: var(--use-primary); }
+}
+
+/* ═══════════════════════════════════════════════
+   BLUE V5 — LIGHT MODE
+   Zinc-50/100/200 neutral palette
+   ═══════════════════════════════════════════════ */
+:root {
+  --font-family: 'Nunito Sans', sans-serif;
+  --font-size:   16px;
+
+  /* ── Radius Scale (v0-style: sharp, enterprise) ── */
+  --radius-xs:  2px;
+  --radius-sm:  4px;
+  --radius-md:  6px;
+  --radius-lg:  8px;
+  --radius-xl:  10px;
+  --radius-2xl: 12px;
+
+  /* ══════════════════════════════════════
+     BRAND IDENTITY — DO NOT MODIFY
+     ══════════════════════════════════════ */
+
+  /* 1. Brand Primary (Buttons / Badges / Non-Surface Fills) */
+  --brand-primary:             #2B5DCA;
+  --brand-on-primary:          #E9F0FF;
+
+  /* 2. Use Primary (Text & Accents directly on Surface) */
+  --use-primary:               #2B5DCA;
+  --use-primary-foreground:    #E9F0FF;
+  --primary-text:              #2B5DCA;
+
+  /* Primary Tokens */
+  --primary:                   #2B5DCA;
+  --surface-tint:              #2B5DCA;
+  --primary-foreground:        #E9F0FF;
+  --primary-container:         #2B5DCA;
+  --on-primary-container:      #E9F0FF;
+  --inverse-primary:           #6997FB;
+
+  --primary-fixed:             #E9F0FF;
+  --on-primary-fixed:          #2B5DCA;
+  --primary-fixed-dim:         #6997FB;
+  --on-primary-fixed-variant:  #194BB8;
+
+  /* Secondary (Ocean Blue) */
+  --secondary:                 #1A5F95;
+  --secondary-foreground:      #FFFFFF;
+  --secondary-container:       #3B78B0;
+  --on-secondary-container:    #FDFCFF;
+  --secondary-fixed:           #D0E4FF;
+  --on-secondary-fixed:        #001D34;
+  --secondary-fixed-dim:       #9BCBFF;
+  --on-secondary-fixed-variant:#004A79;
+
+  /* Tertiary (Cyan) */
+  --tertiary:                  #00677F;
+  --tertiary-foreground:       #FFFFFF;
+  --tertiary-container:        #66C0DE;
+  --on-tertiary-container:     #004D5F;
+  --tertiary-container-text:   #001F28;
+  --tertiary-fixed:            #B6EBFF;
+  --on-tertiary-fixed:         #001F28;
+  --tertiary-fixed-dim:        #79D2F1;
+  --on-tertiary-fixed-variant: #004E60;
+
+  /* ══════════════════════════════════════
+     SURFACE PALETTE — Pure neutral (v0 light)
+     White canvas → clean gray steps, solid borders
+     ══════════════════════════════════════ */
+  --background:                #ffffff;       /* pure white canvas */
+  --foreground:                #0a0a0a;       /* near-black text */
+  --on-background:             #0a0a0a;
+  --surface:                   #fafafa;       /* step 1 lift */
+  --on-surface:                #0a0a0a;
+  --surface-dim:               #e5e5e5;       /* dim baseline */
+  --surface-container-lowest:  #ffffff;       /* pure white cards */
+  --surface-container-low:     #fafafa;       /* subtle lift */
+  --surface-container:         #f5f5f5;       /* neutral-100 */
+  --surface-container-high:    #ebebeb;       /* neutral-200 */
+  --surface-container-highest: #e0e0e0;       /* neutral-300 */
+  --surface-bright:            #ffffff;
+  --surface-variant:           #f5f5f5;
+  --on-surface-variant:        #737373;       /* neutral-500 */
+  --inverse-surface:           #1a1a1a;
+  --inverse-on-surface:        #fafafa;
+
+  /* ── Cards & Popovers ── */
+  --card:                      #ffffff;
+  --card-foreground:           #0a0a0a;
+  --popover:                   #ffffff;
+  --popover-foreground:        #0a0a0a;
+
+  /* ── Borders — Solid hairline (v0 actual style) ── */
+  --border:                    #e5e5e5;       /* neutral-200 */
+  --border-light:              #f0f0f0;       /* neutral-100 */
+  --outline:                   #a3a3a3;       /* neutral-400 */
+  --outline-variant:           #e5e5e5;
+  --shadow:                    #000000;
+  --scrim:                     #000000;
+
+  /* ── Controls & State ── */
+  --muted:                     #f5f5f5;       /* neutral-100 */
+  --muted-foreground:          #737373;       /* neutral-500 */
+  --accent:                    #f5f5f5;
+  --accent-foreground:         #0a0a0a;
+  --input:                     #ffffff;
+  --input-background:          #ffffff;
+  --switch-background:         #d4d4d4;       /* neutral-300 */
+  --ring:                      #2B5DCA;
+  --brand-accent:              #2B5DCA;
+  --brand-accent-dark:         #194BB8;
+  --brand-accent-light:        #6997FB;
+
+  /* ── Interaction States ── */
+  --state-hover:               rgba(0, 0, 0, 0.04);
+  --state-primary-hover:       rgba(43, 93, 202, 0.06);
+  --state-selected:            rgba(0, 0, 0, 0.06);
+  --state-primary-selected:    rgba(43, 93, 202, 0.10);
+
+  /* ── Semantic States ── */
+  --state-error:               #dc2626;
+  --state-error-foreground:    #ffffff;
+  --state-error-container:     #fee2e2;
+  --state-on-error-container:  #991b1b;
+
+  --state-warning:             #d97706;
+  --state-warning-foreground:  #ffffff;
+  --state-warning-container:   #fef3c7;
+  --state-on-warning-container:#92400e;
+
+  --state-success:             #16a34a;
+  --state-success-foreground:  #ffffff;
+  --state-success-container:   #dcfce7;
+  --state-on-success-container:#14532d;
+
+  --state-info:                #1A5F95;
+  --state-info-foreground:     #ffffff;
+  --state-info-container:      #dbeafe;
+  --state-on-info-container:   #1e3a5f;
+
+  --state-debug:               #6366f1;
+  --state-debug-foreground:    #ffffff;
+  --state-debug-container:     #e0e7ff;
+  --state-on-debug-container:  #3730a3;
+
+  --state-disabled-container:  #f4f4f5;
+  --state-disabled-content:    #a1a1aa;
+
+  /* ── Destructive ── */
+  --destructive:               #dc2626;
+  --destructive-foreground:    #ffffff;
+  --error-container:           #fee2e2;
+  --on-error-container:        #991b1b;
+
+  /* ── Sidebar (clean, border-only, pure neutral) ── */
+  --sidebar:                   #fafafa;
+  --sidebar-foreground:        #0a0a0a;
+  --sidebar-primary:           #2B5DCA;
+  --sidebar-primary-foreground:#E9F0FF;
+  --sidebar-accent:            #f5f5f5;
+  --sidebar-accent-foreground: #737373;       /* neutral-500 */
+  --sidebar-border:            #e5e5e5;       /* neutral-200 */
+  --sidebar-ring:              #2B5DCA;
+
+  /* ── Color Aliases ── */
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-ring:                var(--ring);
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-brand-primary:       var(--brand-primary);
+  --color-brand-on-primary:    var(--brand-on-primary);
+  --color-use-primary:         var(--use-primary);
+  --color-primary-container:   var(--primary-container);
+  --color-on-primary-container:var(--on-primary-container);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container:var(--on-secondary-container);
+  --color-tertiary:            var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container:  var(--tertiary-container);
+  --color-on-tertiary-container:var(--on-tertiary-container);
+  --color-destructive:         var(--destructive);
+  --color-destructive-foreground:var(--destructive-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low:    var(--surface-container-low);
+  --color-surface-container:        var(--surface-container);
+  --color-surface-container-high:   var(--surface-container-high);
+  --color-surface-container-highest:var(--surface-container-highest);
+  --color-outline:             var(--outline);
+  --color-outline-variant:     var(--outline-variant);
+  --color-brand-accent:        var(--brand-accent);
+  --color-brand-accent-dark:   var(--brand-accent-dark);
+  --color-brand-accent-light:  var(--brand-accent-light);
+  --color-state-error:         var(--state-error);
+  --color-state-error-foreground: var(--state-error-foreground);
+  --color-state-error-container: var(--state-error-container);
+  --color-state-on-error-container: var(--state-on-error-container);
+  --color-state-warning:       var(--state-warning);
+  --color-state-warning-foreground: var(--state-warning-foreground);
+  --color-state-warning-container: var(--state-warning-container);
+  --color-state-on-warning-container: var(--state-on-warning-container);
+  --color-state-info:          var(--state-info);
+  --color-state-info-foreground: var(--state-info-foreground);
+  --color-state-info-container: var(--state-info-container);
+  --color-state-on-info-container: var(--state-on-info-container);
+  --color-state-success:       var(--state-success);
+  --color-state-success-foreground: var(--state-success-foreground);
+  --color-state-success-container: var(--state-success-container);
+  --color-state-on-success-container: var(--state-on-success-container);
+  --color-state-debug:         var(--state-debug);
+  --color-state-debug-foreground: var(--state-debug-foreground);
+  --color-state-debug-container: var(--state-debug-container);
+  --color-state-on-debug-container: var(--state-on-debug-container);
+  --color-state-disabled-container: var(--state-disabled-container);
+  --color-state-disabled-content: var(--state-disabled-content);
+}
+
+/* ═══════════════════════════════════════════════
+   BLUE V5 — DARK MODE
+   Zinc-950 base — near black, like v0/Vercel
+   ═══════════════════════════════════════════════ */
+.dark {
+  /* ══════════════════════════════════════
+     BRAND IDENTITY — DO NOT MODIFY
+     ══════════════════════════════════════ */
+
+  /* 1. Brand Primary (Buttons / Badges / Non-Surface Fills) */
+  --brand-primary:             #2B5DCA;
+  --brand-on-primary:          #E9F0FF;
+
+  /* 2. Use Primary (Text & Accents directly on Surface) */
+  --use-primary:               #6997FB;
+  --use-primary-foreground:    #00040D;
+  --primary-text:              #6997FB;
+
+  /* Primary Tokens */
+  --primary:                   #6997FB;  /* usePrimary — icons/text ON dark surfaces */
+  --surface-tint:              #6997FB;
+  --primary-foreground:        #E9F0FF;  /* text on brand-primary fills */
+  --primary-container:         #2B5DCA;  /* brand-primary — filled buttons/containers */
+  --on-primary-container:      #E9F0FF;
+  --inverse-primary:           #2B5DCA;
+
+  --primary-fixed:             #E9F0FF;
+  --on-primary-fixed:          #2B5DCA;
+  --primary-fixed-dim:         #6997FB;
+  --on-primary-fixed-variant:  #194BB8;
+
+  /* Secondary (Ocean Blue — dark adapted) */
+  --secondary:                 #9BCBFF;
+  --secondary-foreground:      #003356;
+  --secondary-container:       #5A95CE;
+  --on-secondary-container:    #001528;
+  --secondary-fixed:           #D0E4FF;
+  --on-secondary-fixed:        #001D34;
+  --secondary-fixed-dim:       #9BCBFF;
+  --on-secondary-fixed-variant:#004A79;
+
+  /* Tertiary (Cyan — dark adapted) */
+  --tertiary:                  #83DCFB;
+  --tertiary-foreground:       #003543;
+  --tertiary-container:        #66C0DE;
+  --on-tertiary-container:     #004D5F;
+  --tertiary-container-text:   #B6EBFF;
+  --tertiary-fixed:            #B6EBFF;
+  --on-tertiary-fixed:         #001F28;
+  --tertiary-fixed-dim:        #79D2F1;
+  --on-tertiary-fixed-variant: #004E60;
+
+  /* ══════════════════════════════════════
+     SURFACE PALETTE — Pure neutral (v0 dark)
+     Near-black → solid border depth, no color cast
+     ══════════════════════════════════════ */
+  --background:                #0a0a0a;       /* pure near-black canvas */
+  --foreground:                #fafafa;       /* near-white text */
+  --on-background:             #fafafa;
+  --surface:                   #111111;       /* step 1 lift */
+  --on-surface:                #fafafa;
+  --surface-dim:               #050505;       /* deepest dim */
+  --surface-container-lowest:  #0a0a0a;       /* canvas ground */
+  --surface-container-low:     #141414;       /* subtle lift */
+  --surface-container:         #1a1a1a;       /* neutral section bg */
+  --surface-container-high:    #242424;       /* raised card/tile */
+  --surface-container-highest: #2e2e2e;       /* chip/badge/toggle */
+  --surface-bright:            #3d3d3d;       /* popover / elevated */
+  --surface-variant:           #1a1a1a;
+  --on-surface-variant:        #a3a3a3;       /* neutral-400 */
+  --inverse-surface:           #fafafa;
+  --inverse-on-surface:        #0a0a0a;
+
+  /* ── Cards & Popovers ── */
+  --card:                      #141414;       /* 1 step above bg */
+  --card-foreground:           #fafafa;
+  --popover:                   #1a1a1a;       /* section-level */
+  --popover-foreground:        #fafafa;
+
+  /* ── Borders — Solid neutral (v0 actual style) ── */
+  --border:                    #262626;       /* solid neutral-800 */
+  --border-light:              #1f1f1f;       /* hairline */
+  --outline:                   #404040;       /* neutral-600 */
+  --outline-variant:           #262626;
+  --shadow:                    #000000;
+  --scrim:                     #000000;
+
+  /* ── Controls & State ── */
+  --muted:                     #1a1a1a;
+  --muted-foreground:          #a3a3a3;       /* neutral-400 */
+  --accent:                    #262626;
+  --accent-foreground:         #fafafa;
+  --input:                     #141414;
+  --input-background:          #141414;
+  --switch-background:         #2e2e2e;
+  --ring:                      #6997FB;
+  --brand-accent:              #6997FB;
+  --brand-accent-dark:         #2B5DCA;
+  --brand-accent-light:        #6997FB;
+
+  /* ── Interaction States ── */
+  --state-hover:               rgba(255, 255, 255, 0.04);
+  --state-primary-hover:       rgba(105, 151, 251, 0.10);
+  --state-selected:            rgba(255, 255, 255, 0.06);
+  --state-primary-selected:    rgba(105, 151, 251, 0.16);
+
+  /* ── Semantic States (dark adapted) ── */
+  --state-error:               #f87171;
+  --state-error-foreground:    #450a0a;
+  --state-error-container:     #7f1d1d;
+  --state-on-error-container:  #fecaca;
+
+  --state-warning:             #fbbf24;
+  --state-warning-foreground:  #451a03;
+  --state-warning-container:   #78350f;
+  --state-on-warning-container:#fde68a;
+
+  --state-success:             #4ade80;
+  --state-success-foreground:  #052e16;
+  --state-success-container:   #14532d;
+  --state-on-success-container:#bbf7d0;
+
+  --state-info:                #60a5fa;
+  --state-info-foreground:     #172554;
+  --state-info-container:      #1e3a5f;
+  --state-on-info-container:   #bfdbfe;
+
+  --state-debug:               #818cf8;
+  --state-debug-foreground:    #1e1b4b;
+  --state-debug-container:     #312e81;
+  --state-on-debug-container:  #c7d2fe;
+
+  --state-disabled-container:  #262626;
+  --state-disabled-content:    #525252;
+
+  /* ── Sidebar (deepest panel, barely-there border) ── */
+  --sidebar:                   #080808;       /* deepest — below canvas */
+  --sidebar-foreground:        #fafafa;
+  --sidebar-primary:           #2B5DCA;       /* brand-primary for CTA */
+  --sidebar-primary-foreground:#E9F0FF;
+  --sidebar-accent:            #141414;
+  --sidebar-accent-foreground: #a3a3a3;       /* neutral-400 muted items */
+  --sidebar-border:            #1f1f1f;       /* solid hairline */
+  --sidebar-ring:              #6997FB;
+}
+
+/* ═══════════════════════════════════════════════
+   V5 ENTERPRISE VISUAL OVERRIDES
+   Active only when Blue V5 is selected.
+   Injected via dynamic <style> tag AFTER Tailwind,
+   so these override Tailwind utilities without !important.
+   ═══════════════════════════════════════════════ */
+
+/* ── Radius: Tighter, v0-style ── */
+.rounded-sm   { border-radius: 3px; }
+.rounded      { border-radius: 4px; }
+.rounded-md   { border-radius: 5px; }
+.rounded-lg   { border-radius: 6px; }
+.rounded-xl   { border-radius: 8px; }
+.rounded-2xl  { border-radius: 10px; }
+.rounded-3xl  { border-radius: 12px; }
+/* Preserve pills, avatars, badges */
+.rounded-full { border-radius: 9999px; }
+
+/* ── Inputs: clean, neutral-bordered ── */
+input, textarea, select {
+  border-radius: 6px;
+}
+
+/* ── Shadows → replaced by 1px solid border (v0 style: depth through border, not elevation) ── */
+[class*="shadow-xs"],
+[class*="shadow-sm"],
+[class*="shadow-md"],
+[class*="shadow-lg"],
+[class*="shadow-xl"],
+[class*="shadow-2xl"] {
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+/* ─────────────────────────────────────────────────────────
+   BRAND-PRIMARY ENFORCEMENT (Dark Mode)
+   ─────────────────────────────────────────────────────────
+   Problem: --primary is #6997FB (usePrimary) in dark mode,
+   which is correct for text/icons ON surfaces.
+   But dozens of hardcoded components use bg-[var(--primary)]
+   for solid filled elements (buttons, badges, circles, bars)
+   — those elements should use --brand-primary (#2B5DCA).
+
+   Solution: Target the exact Tailwind class .bg-\[var\(--primary\)\]
+   in dark mode and redirect it to brand-primary.
+   This does NOT affect tinted variants (/10 /15 /20 /5)
+   since those are separate Tailwind utility classes.
+   ───────────────────────────────────────────────────────── */
+
+/* Solid filled backgrounds → brand-primary in dark mode */
+.dark .bg-\[var\(--primary\)\] {
+  background-color: var(--brand-primary);   /* #2B5DCA */
+}
+
+/* Hover solid fill (active states, interactive pills) → brand-primary */
+.dark .hover\:bg-\[var\(--primary\)\]:hover {
+  background-color: var(--brand-primary);   /* #2B5DCA */
+}
+
+/* Border on filled elements stays matched to brand-primary.
+   Note: outline/ghost elements with border-primary only
+   still read --primary = #6997FB (usePrimary) which is correct. */
+.dark .bg-\[var\(--primary\)\].border-\[var\(--primary\)\],
+.dark .bg-\[var\(--primary\)\] .border-\[var\(--primary\)\] {
+  border-color: var(--brand-primary);
+}
+
+/* Tonal container fills (button.tsx tonal variant) → brand-primary */
+.dark .bg-\[var\(--primary-container\)\] {
+  background-color: var(--brand-primary);
+  color: var(--brand-on-primary);
+}
+
+/* ── Focus ring: use-primary aligned ── */
+:focus-visible {
+  outline-color: var(--use-primary);
+}
+
+/* ── Scrollbar: minimal, neutral-toned ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-container-highest) transparent;
+}
+*::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--surface-container-highest);
+  border-radius: 9999px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--outline);
+}

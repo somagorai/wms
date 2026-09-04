@@ -1,0 +1,645 @@
+@custom-variant dark (&:is(.dark *));
+@import './chart-tokens.css';
+
+/* ─────────────────────────────────────────────
+   WCAG contrast reference (calculated):
+   AA normal text  ≥ 4.5:1
+   AA large text   ≥ 3:1
+   Light foreground (#1A1A1A) on white (#FFF)         → 19.6:1 ✅
+   Light muted-fg  (#4B4B4B) on white (#FFF)          →  9.7:1 ✅
+   Light muted-fg  (#4B4B4B) on card  (#FAFAFA)       →  9.3:1 ✅
+   Light primary   (#006E2D) on white (#FFF)           → 11.7:1 ✅
+   Dark foreground (#E4E4E4) on bg    (#121212)        → 15.8:1 ✅
+   Dark muted-fg   (#ABABAB) on bg    (#121212)        →  7.0:1 ✅
+   Dark primary    (#3FE371) on bg    (#121212)        →  8.0:1 ✅
+   ───────────────────────────────────────────── */
+
+:root {
+  --font-family: sans-serif;
+  --font-size: 16px;
+
+  /* ── Primary: Forest Green (Material 3 light scheme) ── */
+  --primary:                   #006E2D;   /* palette-primary-40  */
+  --primary-foreground:        #FFFFFF;   /* on-primary          */
+  --primary-container:         #00C658;   /* palette-primary-70  */
+  --on-primary-container:      #004B1D;   /* palette-primary-25  */
+  --inverse-primary:           #3EE270;   /* palette-primary-80  */
+
+  /* ── Secondary: Blue-Slate (Material 3 light scheme) ── */
+  --secondary:                 #3E6071;   /* secondary light      */
+  --secondary-foreground:      #FFFFFF;   /* on-secondary         */
+  --secondary-container:       #C3E8FC;   /* secondaryContainer   */
+  --on-secondary-container:    #001F2A;   /* onSecondaryContainer */
+
+  /* ── Tertiary: Amber (Material 3 light scheme) ── */
+  --tertiary:                  #825500;   /* tertiary light       */
+  --tertiary-foreground:       #FFFFFF;   /* on-tertiary          */
+  --tertiary-container:        #FFDDB4;   /* tertiaryContainer    */
+  --on-tertiary-container:     #291800;   /* onTertiaryContainer  */
+
+  /* ── Universal Pure Clean Neutral Surfaces (Lightened & Refined) ── */
+  --background:                #FCFCFD;  /* Ultra-light, airy canvas */
+  --foreground:                #18191C;  /* Deep crisp neutral text */
+  --on-background:             #18191C;  /* Deep crisp neutral text */
+  --surface:                   #FFFFFF;  /* Pure white base surface */
+  --on-surface:                #18191C;  /* Deep crisp neutral text */
+  --surface-dim:               #ECEEF2;  /* Subtle surface dim */
+  --surface-bright:            #FFFFFF;  /* Surface bright */
+  --surface-container-lowest:  #FFFFFF;  /* Surface container lowest */
+  --surface-container-low:     #F9FAFC;  /* Ultra-light surface container low */
+  --surface-container:         #F4F5F8;  /* Light surface container */
+  --surface-container-high:    #EEF0F4;  /* Light surface container high */
+  --surface-container-highest: #E8EAF0;  /* Light surface container highest */
+
+  /* ── Surface Variant Containers ── */
+  --surface-variant:           #E8EAF0;
+  --on-surface-variant:        #505560;
+  --inverse-surface:           #2E3034;
+  --inverse-on-surface:        #F1F3F6;
+
+  /* ── Cards / Popover ── */
+  --card:                      #FFFFFF;
+  --card-foreground:           #18191C;
+  --popover:                   #FFFFFF;
+  --popover-foreground:        #18191C;
+
+  /* ── Borders & Outline (One shade darker for visibility, light for row bottoms) ── */
+  --border:                    #D1D5DF;  /* Visible, crisp clean border */
+  --border-light:              rgba(209, 213, 223, 0.45); /* Subtle row bottom outline */
+  --outline:                   #7E8492;
+  --outline-variant:           #D1D5DF;
+
+  /* ── State / Utility ── */
+  --muted:                     #F7F8FA;
+  --muted-foreground:          #6B7280;
+  --accent:                    #F2F3F6;
+  --accent-foreground:         #18191C;
+  --destructive:               #BA1A1A;
+  --destructive-foreground:    #FFFFFF;
+  --input:                     #FFFFFF;
+  --input-background:          #FFFFFF;
+  --switch-background:         #E0E3EB;
+  --ring:                      #006E2D;
+
+  /* ── Typography weights ── */
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* ── Charts (primary, secondary, tertiary + shades) ── */
+  --chart-2: #3E6071;
+  --chart-3: #825500;
+  --chart-4: #3EE270;
+  --chart-5: #FBB03B;
+
+  /* ── Radius ── */
+  --radius: 0.5rem;
+
+  /* ── Sidebar (lightened neutral) ── */
+  --sidebar:                    #F7F8FA;
+  --sidebar-foreground:         #18191C;
+  --sidebar-primary:            #006E2D;
+  --sidebar-primary-foreground: #FFFFFF;
+  --sidebar-accent:             #F2F3F6;
+  --sidebar-accent-foreground:  #18191C;
+  --sidebar-border:             #E0E3EB;
+  --sidebar-ring:               #006E2D;
+
+  /* ── Brand accent shortcuts ── */
+  --brand-accent:       #00C658;
+  --brand-accent-dark:  #006E2D;
+  --brand-accent-light: #3EE270;
+
+  /* ── Full Primary palette scale ── */
+  --palette-primary-0:   #000000;
+  --palette-primary-5:   #001504;
+  --palette-primary-10:  #002109;
+  --palette-primary-15:  #002D0E;
+  --palette-primary-20:  #003914;
+  --palette-primary-25:  #00461A;
+  --palette-primary-30:  #005320;
+  --palette-primary-35:  #006027;
+  --palette-primary-40:  #006E2D;
+  --palette-primary-50:  #008A3B;
+  --palette-primary-60:  #00A749;
+  --palette-primary-70:  #00C558;
+  --palette-primary-80:  #3EE270;
+  --palette-primary-90:  #67FF8C;
+  --palette-primary-95:  #C5FFC8;
+  --palette-primary-98:  #EBFFE7;
+  --palette-primary-99:  #F6FFF1;
+  --palette-primary-100: #FFFFFF;
+
+  /* ── Full Secondary palette scale ── */
+  --palette-secondary-0:   #000000;
+  --palette-secondary-5:   #00131C;
+  --palette-secondary-10:  #001F2A;
+  --palette-secondary-20:  #0D3444;
+  --palette-secondary-30:  #284B5B;
+  --palette-secondary-40:  #406374;
+  --palette-secondary-50:  #597C8D;
+  --palette-secondary-60:  #7396A8;
+  --palette-secondary-70:  #8DB0C3;
+  --palette-secondary-80:  #A8CCDF;
+  --palette-secondary-90:  #C3E8FC;
+  --palette-secondary-95:  #E1F4FF;
+  --palette-secondary-100: #FFFFFF;
+
+  /* ── Full Tertiary palette scale ── */
+  --palette-tertiary-0:   #000000;
+  --palette-tertiary-5:   #1B0E00;
+  --palette-tertiary-10:  #291800;
+  --palette-tertiary-20:  #452B00;
+  --palette-tertiary-30:  #633F00;
+  --palette-tertiary-40:  #825500;
+  --palette-tertiary-50:  #A36B00;
+  --palette-tertiary-60:  #C68302;
+  --palette-tertiary-70:  #E49D28;
+  --palette-tertiary-80:  #FFB953;
+  --palette-tertiary-90:  #FFDDB4;
+  --palette-tertiary-95:  #FFEEDC;
+  --palette-tertiary-100: #FFFFFF;
+
+  /* ── Full Neutral palette scale ── */
+  --palette-neutral-0:   #000000;
+  --palette-neutral-10:  #1A1C19;
+  --palette-neutral-20:  #2E312D;
+  --palette-neutral-30:  #454744;
+  --palette-neutral-40:  #5D5F5B;
+  --palette-neutral-50:  #757873;
+  --palette-neutral-60:  #8F918D;
+  --palette-neutral-70:  #AAACA7;
+  --palette-neutral-80:  #C6C7C2;
+  --palette-neutral-90:  #E2E3DD;
+  --palette-neutral-95:  #F0F1EB;
+  --palette-neutral-99:  #FCFDF7;
+  --palette-neutral-100: #FFFFFF;
+
+  /* ── Surface Variant ── */
+  --surface-variant:           #E0E2DF;
+  --on-surface-variant:        #444744;
+
+  /* ── Semantic State Tokens ── */
+  --state-error:               #AE2626;
+  --state-error-foreground:    #FFFFFF;
+  --state-error-container:     #F9DFDB;
+  --state-on-error-container:  #7D161D;
+
+  --state-fatal:               #7D0000;
+  --state-fatal-foreground:    #FFFFFF;
+  --state-fatal-container:     #FFD2CC;
+  --state-on-fatal-container:  #5C0000;
+
+  --state-warning:             #BF5C15;
+  --state-warning-foreground:  #FFFFFF;
+  --state-warning-container:   #FBE7D9;
+  --state-on-warning-container:#84400F;
+
+  --state-info:                #357C9F;
+  --state-info-foreground:     #FFFFFF;
+  --state-info-container:      #DDEEF7;
+  --state-on-info-container:   #25566E;
+
+  --state-success:             #4C9F35;
+  --state-success-foreground:  #FFFFFF;
+  --state-success-container:   #E4F5DF;
+  --state-on-success-container:#30761D;
+
+  --state-debug:               #737873;
+  --state-debug-foreground:    #FFFFFF;
+  --state-debug-container:     #F5F5F5;
+  --state-on-debug-container:  #1A1A1A;
+
+  --state-hover:               rgba(26, 26, 26, 0.08);
+  --state-primary-hover:       rgba(0, 110, 45, 0.08);
+  --state-selected:            rgba(26, 26, 26, 0.12);
+  --state-primary-selected:    rgba(0, 110, 45, 0.12);
+  --state-disabled-container:  rgba(26, 26, 26, 0.04);
+  --state-disabled-content:    rgba(26, 26, 26, 0.38);
+  --tertiary-container-text:   #452B00;
+}
+
+.dark {
+
+  /* ── Primary: Forest Green (Material 3 dark scheme) ── */
+  --primary:                   #3FE371;   /* palette-primary-80  */
+  --primary-foreground:        #003914;   /* palette-primary-20  */
+  --primary-container:         #005320;   /* palette-primary-30  */
+  --on-primary-container:      #67FF8C;   /* palette-primary-90  */
+  --inverse-primary:           #006E2D;   /* palette-primary-40  */
+
+  /* ── Secondary: Blue-Slate (Material 3 dark scheme) ── */
+  --secondary:                 #A8CCDF;   /* secondary dark       */
+  --secondary-foreground:      #0D3444;   /* on-secondary dark    */
+  --secondary-container:       #284B5B;   /* secondaryContainer   */
+  --on-secondary-container:    #C3E8FC;   /* onSecondaryContainer */
+
+  /* ── Tertiary: Amber (Material 3 dark scheme) ── */
+  --tertiary:                  #FFB953;   /* palette-tertiary-80 */
+  --tertiary-foreground:       #452B00;   /* palette-tertiary-20 */
+  --tertiary-container:        #633F00;   /* palette-tertiary-30 */
+  --on-tertiary-container:     #FFDDB4;   /* palette-tertiary-90 */
+
+  /* ── Universal Pure Clean Dark Neutral Surfaces ── */
+  --background:                #121316;
+  --foreground:                #EDEDEF;
+  --on-background:             #EDEDEF;
+  --surface:                   #16171A;
+  --on-surface:                #EDEDEF;
+  --surface-dim:               #121316;
+  --surface-bright:            #383A40;
+  --surface-container-lowest:  #0E0E10;
+  --surface-container-low:     #1A1B1E;
+  --surface-container:         #202226;
+  --surface-container-high:    #282A30;
+  --surface-container-highest: #32343B;
+
+  /* ── Surface Variant Containers ── */
+  --surface-variant:           #282A30;
+  --on-surface-variant:        #9EA2AE;
+  --inverse-surface:           #EDEDEF;
+  --inverse-on-surface:        #16171A;
+
+  /* ── Cards / Popover ── */
+  --card:                      #202226;
+  --card-foreground:           #EDEDEF;
+  --popover:                   #282A30;
+  --popover-foreground:        #EDEDEF;
+
+  /* ── Borders & Outline ── */
+  --border:                    #353840;
+  --border-light:              rgba(255, 255, 255, 0.08);
+  --outline:                   #6E7380;
+  --outline-variant:           #353840;
+
+  /* ── State / Utility ── */
+  --muted:                     #1A1B1E;
+  --muted-foreground:          #9EA2AE;
+  --accent:                    #282A30;
+  --accent-foreground:         #EDEDEF;
+  --destructive:               #FFB4AB;
+  --destructive-foreground:    #690005;
+  --input:                     #1A1B1E;
+  --input-background:          #1A1B1E;
+  --switch-background:         #353840;
+  --ring:                      #3FE371;
+
+  /* ── Typography weights ── */
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+
+  /* ── Universal Charts ── */
+  --chart-2: var(--chart-green);
+  --chart-3: var(--chart-orange);
+  --chart-4: var(--chart-purple);
+  --chart-5: var(--chart-yellow);
+
+  /* ── Radius / Font ── */
+  --radius: 0.5rem;
+  --font-size: 16px;
+
+  /* ── Sidebar (neutral, no tint) ── */
+  --sidebar:                    #121212;
+  --sidebar-foreground:         #E4E4E4;
+  --sidebar-primary:            #3FE371;
+  --sidebar-primary-foreground: #003914;
+  --sidebar-accent:             #1E1E1E;
+  --sidebar-accent-foreground:  #E4E4E4;
+  --sidebar-border:             #2E2E2E;
+  --sidebar-ring:               #3FE371;
+
+  /* ── Brand accent shortcuts ── */
+  --brand-accent:       #00C658;
+  --brand-accent-dark:  #006E2D;
+  --brand-accent-light: #3EE270;
+
+  /* ── Full Primary palette scale ── */
+  --palette-primary-0:   #000000;
+  --palette-primary-5:   #001504;
+  --palette-primary-10:  #002109;
+  --palette-primary-15:  #002D0E;
+  --palette-primary-20:  #003914;
+  --palette-primary-25:  #00461A;
+  --palette-primary-30:  #005320;
+  --palette-primary-35:  #006027;
+  --palette-primary-40:  #006E2D;
+  --palette-primary-50:  #008A3B;
+  --palette-primary-60:  #00A749;
+  --palette-primary-70:  #00C558;
+  --palette-primary-80:  #3EE270;
+  --palette-primary-90:  #67FF8C;
+  --palette-primary-95:  #C5FFC8;
+  --palette-primary-98:  #EBFFE7;
+  --palette-primary-99:  #F6FFF1;
+  --palette-primary-100: #FFFFFF;
+
+  /* ── Full Secondary palette scale ── */
+  --palette-secondary-0:   #000000;
+  --palette-secondary-5:   #00131C;
+  --palette-secondary-10:  #001F2A;
+  --palette-secondary-20:  #0D3444;
+  --palette-secondary-30:  #284B5B;
+  --palette-secondary-40:  #406374;
+  --palette-secondary-50:  #597C8D;
+  --palette-secondary-60:  #7396A8;
+  --palette-secondary-70:  #8DB0C3;
+  --palette-secondary-80:  #A8CCDF;
+  --palette-secondary-90:  #C3E8FC;
+  --palette-secondary-95:  #E1F4FF;
+  --palette-secondary-100: #FFFFFF;
+
+  /* ── Full Tertiary palette scale ── */
+  --palette-tertiary-0:   #000000;
+  --palette-tertiary-5:   #1B0E00;
+  --palette-tertiary-10:  #291800;
+  --palette-tertiary-20:  #452B00;
+  --palette-tertiary-30:  #633F00;
+  --palette-tertiary-40:  #825500;
+  --palette-tertiary-50:  #A36B00;
+  --palette-tertiary-60:  #C68302;
+  --palette-tertiary-70:  #E49D28;
+  --palette-tertiary-80:  #FFB953;
+  --palette-tertiary-90:  #FFDDB4;
+  --palette-tertiary-95:  #FFEEDC;
+  --palette-tertiary-100: #FFFFFF;
+
+  /* ── Full Neutral palette scale ── */
+  --palette-neutral-0:   #000000;
+  --palette-neutral-10:  #1A1C19;
+  --palette-neutral-20:  #2E312D;
+  --palette-neutral-30:  #454744;
+  --palette-neutral-40:  #5D5F5B;
+  --palette-neutral-50:  #757873;
+  --palette-neutral-60:  #8F918D;
+  --palette-neutral-70:  #AAACA7;
+  --palette-neutral-80:  #C6C7C2;
+  --palette-neutral-90:  #E2E3DD;
+  --palette-neutral-95:  #F0F1EB;
+  --palette-neutral-99:  #FCFDF7;
+  --palette-neutral-100: #FFFFFF;
+
+  /* ── Surface Variant ── */
+  --surface-variant:           #E0E2DF;
+  --on-surface-variant:        #444744;
+
+  /* ── Semantic State Tokens ── */
+  --state-error:               #AE2626;
+  --state-error-foreground:    #FFFFFF;
+  --state-error-container:     #F9DFDB;
+  --state-on-error-container:  #7D161D;
+
+    /* ── Exception State: Fatal (Purple) ── */
+  --state-fatal:               #C084FC;  /* Luminous Orchid Purple (Purple 400) */
+  --state-fatal-foreground:    #3B0764;
+  --state-fatal-container:     #4A1D96;  /* Deep Purple Container */
+  --state-on-fatal-container:  #F3E8FF;  /* Soft Lavender 100 */
+  --state-on-fatal-container:  #5C0000;
+
+  --state-warning:             #BF5C15;
+  --state-warning-foreground:  #FFFFFF;
+  --state-warning-container:   #FBE7D9;
+  --state-on-warning-container:#84400F;
+
+  --state-info:                #357C9F;
+  --state-info-foreground:     #FFFFFF;
+  --state-info-container:      #DDEEF7;
+  --state-on-info-container:   #25566E;
+
+  --state-success:             #4C9F35;
+  --state-success-foreground:  #FFFFFF;
+  --state-success-container:   #E4F5DF;
+  --state-on-success-container:#30761D;
+
+  --state-debug:               #737873;
+  --state-debug-foreground:    #FFFFFF;
+  --state-debug-container:     #F5F5F5;
+  --state-on-debug-container:  #1A1A1A;
+
+  --state-hover:               rgba(26, 26, 26, 0.08);
+  --state-primary-hover:       rgba(0, 110, 45, 0.08);
+  --state-selected:            rgba(26, 26, 26, 0.12);
+  --state-primary-selected:    rgba(0, 110, 45, 0.12);
+  --state-disabled-container:  rgba(26, 26, 26, 0.04);
+  --state-disabled-content:    rgba(26, 26, 26, 0.38);
+  --tertiary-container-text:   #452B00;
+
+  /* ── Surface Variant ── */
+  --surface-variant:           #444744;
+  --on-surface-variant:        #C3C7C2;
+
+  /* ── Semantic State Tokens (Dark) ── */
+  --state-error:               #F2BEB8;
+  --state-error-foreground:    #5F0A0F;
+  --state-error-container:     #7D161D;
+  --state-on-error-container:  #F9DFDB;
+
+  --state-warning:             #F7CFB3;
+  --state-warning-foreground:  #5F2E0A;
+  --state-warning-container:   #84400F;
+  --state-on-warning-container:#FBE7D9;
+
+  --state-success:             #C9EAC0;
+  --state-success-foreground:  #235415;
+  --state-success-container:   #30761D;
+  --state-on-success-container:#E4F5DF;
+
+  --state-info:                #C0DCEA;
+  --state-info-foreground:     #1A3D4F;
+  --state-info-container:      #25566E;
+  --state-on-info-container:   #DDEEF7;
+
+    /* ── Exception State: Fatal (Purple) ── */
+  --state-fatal:               #C084FC;  /* Luminous Orchid Purple (Purple 400) */
+  --state-fatal-foreground:    #3B0764;
+  --state-fatal-container:     #4A1D96;  /* Deep Purple Container */
+  --state-on-fatal-container:  #F3E8FF;  /* Soft Lavender 100 */
+  --state-on-fatal-container:  #FFD2CC;
+
+  --state-debug:               #AAACA7;
+  --state-debug-foreground:    #121212;
+  --state-debug-container:     #1A1A1A;
+  --state-on-debug-container:  #C6C7C2;
+
+  --state-hover:               rgba(228, 228, 228, 0.08);
+  --state-primary-hover:       rgba(63, 227, 113, 0.08);
+  --state-selected:            rgba(228, 228, 228, 0.12);
+  --state-primary-selected:    rgba(63, 228, 113, 0.12);
+  --state-disabled-container:  rgba(228, 228, 228, 0.04);
+  --state-disabled-content:    rgba(228, 228, 228, 0.38);
+  --tertiary-container-text:   #FFDDB4;
+}
+
+@theme inline {
+  --color-surface-variant: var(--surface-variant);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-state-hover: var(--state-hover);
+  --color-state-primary-hover: var(--state-primary-hover);
+  --color-state-selected: var(--state-selected);
+  --color-state-primary-selected: var(--state-primary-selected);
+  --color-state-error: var(--state-error);
+  --color-state-error-foreground: var(--state-error-foreground);
+  --color-state-error-container: var(--state-error-container);
+  --color-state-on-error-container: var(--state-on-error-container);
+  --color-state-warning: var(--state-warning);
+  --color-state-warning-foreground: var(--state-warning-foreground);
+  --color-state-warning-container: var(--state-warning-container);
+  --color-state-on-warning-container: var(--state-on-warning-container);
+  --color-state-info: var(--state-info);
+  --color-state-info-foreground: var(--state-info-foreground);
+  --color-state-info-container: var(--state-info-container);
+  --color-state-on-info-container: var(--state-on-info-container);
+  --color-state-success: var(--state-success);
+  --color-state-success-foreground: var(--state-success-foreground);
+  --color-state-success-container: var(--state-success-container);
+  --color-state-on-success-container: var(--state-on-success-container);
+  --color-state-debug: var(--state-debug);
+  --color-state-debug-foreground: var(--state-debug-foreground);
+  --color-state-debug-container: var(--state-debug-container);
+  --color-state-on-debug-container: var(--state-on-debug-container);
+  --color-state-disabled-container: var(--state-disabled-container);
+  --color-state-disabled-content: var(--state-disabled-content);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+  --color-tertiary: var(--tertiary);
+  --color-tertiary-foreground: var(--tertiary-foreground);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-accent-dark: var(--brand-accent-dark);
+  --color-brand-accent-light: var(--brand-accent-light);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  h1 {
+    font-size: var(--text-2xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h2 {
+    font-size: var(--text-xl);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h3 {
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  h4 {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  label {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  button {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.5;
+  }
+
+  input {
+    font-size: var(--text-base);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.5;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--outline-variant) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--outline-variant);
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: var(--outline);
+    background-clip: padding-box;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}

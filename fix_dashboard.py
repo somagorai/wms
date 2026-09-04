@@ -1,0 +1,21 @@
+with open("src/app/pages/Dashboard.tsx", "r") as f:
+    content = f.read()
+
+# Replace the wrong primary glows in Dashboard
+content = content.replace(
+    'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--primary)_40%,transparent),0_0_18px_color-mix(in_srgb,var(--primary)_18%,transparent)] hover:border-[var(--primary)]/50" : "hover:scale-[1.02] hover:border-[var(--state-error)]',
+    'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--state-error)_40%,transparent),0_0_18px_color-mix(in_srgb,var(--state-error)_18%,transparent)] hover:border-[var(--state-error)]/50" : "hover:scale-[1.02] hover:border-[var(--state-error)]'
+)
+
+content = content.replace(
+    'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--primary)_40%,transparent),0_0_18px_color-mix(in_srgb,var(--primary)_18%,transparent)] hover:border-[var(--primary)]/50" : "hover:scale-[1.02] hover:border-[var(--state-info)]',
+    'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--state-info)_40%,transparent),0_0_18px_color-mix(in_srgb,var(--state-info)_18%,transparent)] hover:border-[var(--state-info)]/50" : "hover:scale-[1.02] hover:border-[var(--state-info)]'
+)
+
+content = content.replace(
+    'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--primary)_40%,transparent),0_0_18px_color-mix(in_srgb,var(--primary)_18%,transparent)] hover:border-[var(--primary)]/50" : "hover:scale-[1.02] hover:border-[var(--state-success)]',
+    'hover:shadow-[0_0_0_1px_color-mix(in_srgb,var(--state-success)_40%,transparent),0_0_18px_color-mix(in_srgb,var(--state-success)_18%,transparent)] hover:border-[var(--state-success)]/50" : "hover:scale-[1.02] hover:border-[var(--state-success)]'
+)
+
+with open("src/app/pages/Dashboard.tsx", "w") as f:
+    f.write(content)
