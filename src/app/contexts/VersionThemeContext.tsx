@@ -43,6 +43,16 @@ const VersionThemeContext = createContext<VersionThemeContextType | undefined>(u
 
 export function VersionThemeProvider({ children }: { children: React.ReactNode }) {
   const [version, setVersionState] = useState<Version>(() => {
+    const isLocalhost =
+      typeof window !== "undefined" &&
+      (window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1" ||
+        window.location.hostname.includes("192.168.") ||
+        window.location.hostname.includes("10."));
+    if (isLocalhost) {
+      return "Master Blue V6";
+    }
+
     const saved = localStorage.getItem(STORAGE_VERSION_KEY);
     if (
       saved === "Master Green" ||
